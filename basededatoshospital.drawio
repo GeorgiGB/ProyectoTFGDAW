@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" modified="2023-04-27T15:34:32.307Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="ZrLkZYIMg5-L83HyPjy1" version="21.2.3" type="github">
+  <diagram id="T2E_p-HOzJomMQlj3D-k" name="Page-1">
+    <mxGraphModel dx="680" dy="1013" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-5" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="530" y="395" width="130" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-1" value="Pacientes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-5">
+          <mxGeometry width="130" height="23.846153846153847" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-2" value="id&lt;br&gt;pacNombre&lt;br&gt;pacApellido&lt;br&gt;pacDireccion&lt;br&gt;pacSexo&lt;br&gt;pacGS&lt;br&gt;pacFechRegistro" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-5">
+          <mxGeometry y="23.846153846153847" width="130" height="131.15384615384616" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-7" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="190" y="395" width="110" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="JsX1po8SNQw9WkHdY-E0-1" value="id&lt;br&gt;trabNombre&lt;br&gt;trabApellido&lt;br&gt;trabDireccion&lt;br&gt;trabPuesto&lt;br&gt;trabHorario&lt;br&gt;trabCorreo&lt;br&gt;trabSexo&lt;br&gt;trabTel&lt;br&gt;trabFechNa" style="rounded=0;whiteSpace=wrap;html=1;" parent="hAJ5YH12Zm33PJV0IgEa-7" vertex="1">
+          <mxGeometry y="20" width="110" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="JsX1po8SNQw9WkHdY-E0-2" value="Trabajadores" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="hAJ5YH12Zm33PJV0IgEa-7" vertex="1">
+          <mxGeometry width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.563;entryY=0.022;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="hAJ5YH12Zm33PJV0IgEa-4" target="hAJ5YH12Zm33PJV0IgEa-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-16" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="318.5" y="210" width="190" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-6" value="" style="group" vertex="1" connectable="0" parent="hAJ5YH12Zm33PJV0IgEa-16">
+          <mxGeometry y="33.63636363636364" width="190" height="151.36363636363637" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-3" value="Atendido" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-6">
+          <mxGeometry width="190" height="18.920454545454547" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-4" value="TrabajadorId&lt;br&gt;PacienteId&lt;br&gt;PK(TrabajadorId, PacienteId)&lt;br&gt;FK(TrabajadorId) Ref Trabajadores(id)&lt;br&gt;FK(PacientesId) Ref Pacientes(id)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-6">
+          <mxGeometry y="18.920454545454547" width="190" height="132.4431818181818" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-12" value="n:m" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;spacing=2;fontSize=20;fontStyle=1" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-16">
+          <mxGeometry x="51.153846153846146" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-20" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="40" y="560" width="110" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-18" value="id&lt;br&gt;usuNombre&lt;br&gt;usuPwd&lt;br&gt;usuRol&lt;br&gt;usuTrabId&lt;br&gt;FK (usuTrabId) Ref Trabajadores(Id)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-20">
+          <mxGeometry y="15.555555555555555" width="110" height="124.44444444444444" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-19" value="Usuarios" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-20">
+          <mxGeometry width="110" height="15.555555555555555" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="JsX1po8SNQw9WkHdY-E0-1" target="hAJ5YH12Zm33PJV0IgEa-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-23" value="1:1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;spacing=2;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="465" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="hAJ5YH12Zm33PJV0IgEa-4" target="JsX1po8SNQw9WkHdY-E0-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-26" value="" style="group;fontStyle=0" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="440" y="560" width="160" height="285" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-31" value="" style="group" vertex="1" connectable="0" parent="hAJ5YH12Zm33PJV0IgEa-26">
+          <mxGeometry x="-60" y="22.800000000000004" width="146.66666666666666" height="171" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-27" value="Citas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-31">
+          <mxGeometry x="0.6085753803596127" width="146.05809128630705" height="26.306640000000005" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-28" value="&lt;div&gt;ID&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;PacienteID&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;TrabajadorID&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Fecha datetime&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Duracion&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;FK (PacienteID)&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;REF Pacientes(ID),&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;FK (TrabajadorID)&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;REF Trabajadores(ID)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-31">
+          <mxGeometry y="26.306640000000005" width="146.66666666666666" height="144.69336" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-33" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;n:1&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="hAJ5YH12Zm33PJV0IgEa-26">
+          <mxGeometry x="100" y="78.23529411764706" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hAJ5YH12Zm33PJV0IgEa-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="hAJ5YH12Zm33PJV0IgEa-28" target="hAJ5YH12Zm33PJV0IgEa-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
