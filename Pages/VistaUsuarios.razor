@@ -1,0 +1,12 @@
+﻿@page "/vista-usuarios"
+@using Syncfusion.Blazor.Grids
+@inject IUsuarioService UsuarioService
+
+<SfGrid @ref="grid" DataSource="@Usuario" AllowPaging="true">
+    <GridPageSettings PageSize="10"></GridPageSettings>
+    <GridColumns>
+        <GridColumn Field=@nameof(Usuario.id) HeaderText="ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Usuario.usuNombre) HeaderText="Nombre" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Usuario.usuRol) HeaderText="Rol" Width="150"></GridColumn>
+    </GridColumns>
+</SfGrid>

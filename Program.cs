@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
 using ProyectoTFG.Data;
+using ProyectoTFG.Models;
+using Syncfusion;
+using Syncfusion.Blazor;
+using Syncfusion.Blazor.RichTextEditor;
 
 var builder = WebApplication.CreateBuilder(args);
 
