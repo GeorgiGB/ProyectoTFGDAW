@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 using ProyectoTFG.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+
+var connectionString = builder.Configuration.GetConnectionString("HospitalDB");
+
+
+builder.Services.AddDbContextFactory<HospitalContext>(options => options.UseSqlite(connectionString));
+
+//Register Syncfusion license
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjA0NDM3NkAzMjMwMmUzNDJlMzBZZkNQVElRZzdLbFkyRmhGcldRL3VSUDBMeVEwL2k0R3JicDFFRGJqNUpBPQ==");
 
 var app = builder.Build();
 

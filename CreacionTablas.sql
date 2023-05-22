@@ -1,54 +1,54 @@
 -- Creación de la tabla Trabajadores
 CREATE TABLE Trabajadores (
-    id INT PRIMARY KEY IDENTITY(1,1),
+    idtrab INT PRIMARY KEY,
     trabNombre VARCHAR(50) NOT NULL,
     trabApellido VARCHAR(50) NOT NULL,
     trabDireccion VARCHAR(100),
-    trabPuesto VARCHAR(50) NOT NULL,
-    trabHorario VARCHAR(50) NOT NULL,
-    trabCorreo VARCHAR(100) NOT NULL,
-    trabSexo CHAR(1) NOT NULL,
-    trabTel VARCHAR(20) NOT NULL,
-    trabFechNa DATE NOT NULL
+    trabPuesto VARCHAR(50),
+    trabHorario VARCHAR(50),
+    trabCorreo VARCHAR(50),
+    trabSexo CHAR(1),
+    trabTel VARCHAR(15),
+    trabFechNa DATE
 );
 
 -- Creación de la tabla Usuarios
 CREATE TABLE Usuarios (
-    id INT PRIMARY KEY IDENTITY(1,1),
+    idusu INT PRIMARY KEY,
     usuNombre VARCHAR(50) NOT NULL,
     usuPwd VARCHAR(50) NOT NULL,
-    usuRol VARCHAR(50) NOT NULL,
+    usuRol VARCHAR(20) NOT NULL,
     usuTrabId INT NOT NULL,
-    CONSTRAINT FK_Usuarios_Trabajadores FOREIGN KEY (usuTrabId) REFERENCES Trabajadores(id)
+    FOREIGN KEY (usuTrabId) REFERENCES Trabajadores(id)
 );
 
 -- Creación de la tabla Pacientes
 CREATE TABLE Pacientes (
-    id INT PRIMARY KEY IDENTITY(1,1),
+    idpac INT PRIMARY KEY,
     pacNombre VARCHAR(50) NOT NULL,
     pacApellido VARCHAR(50) NOT NULL,
     pacDireccion VARCHAR(100),
-    pacSexo CHAR(1) NOT NULL,
+    pacSexo CHAR(1),
     pacGS VARCHAR(50),
-    pacFechRegistro DATE NOT NULL
-);
-
--- Creación de la tabla Citas
-CREATE TABLE Citas (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    PacienteID INT NOT NULL,
-    TrabajadorID INT NOT NULL,
-    Fecha DATETIME NOT NULL,
-    Duracion INT NOT NULL,
-    CONSTRAINT FK_Citas_Pacientes FOREIGN KEY (PacienteID) REFERENCES Pacientes(id),
-    CONSTRAINT FK_Citas_Trabajadores FOREIGN KEY (TrabajadorID) REFERENCES Trabajadores(id)
+    pacFechRegistro DATE
 );
 
 -- Creación de la tabla Atendido
 CREATE TABLE Atendido (
-    TrabajadorID INT NOT NULL,
+    TrabajadorId INT NOT NULL,
+    PacienteId INT NOT NULL,
+    PRIMARY KEY (TrabajadorId, PacienteId),
+    FOREIGN KEY (TrabajadorId) REFERENCES Trabajadores(id),
+    FOREIGN KEY (PacienteId) REFERENCES Pacientes(id)
+);
+
+-- Creación de la tabla Citas
+CREATE TABLE Citas (
+    idCita INT PRIMARY KEY,
     PacienteID INT NOT NULL,
-    PRIMARY KEY (TrabajadorID, PacienteID),
-    CONSTRAINT FK_Atendido_Trabajadores FOREIGN KEY (TrabajadorID) REFERENCES Trabajadores(id),
-    CONSTRAINT FK_Atendido_Pacientes FOREIGN KEY (PacienteID) REFERENCES Pacientes(id)
+    TrabajadorID INT NOT NULL,
+    Fecha DATETIME NOT NULL,
+    Duracion INT NOT NULL,
+    FOREIGN KEY (PacienteID) REFERENCES Pacientes(id),
+    FOREIGN KEY (TrabajadorID) REFERENCES Trabajadores(id)
 );
