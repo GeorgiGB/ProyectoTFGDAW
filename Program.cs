@@ -2,12 +2,17 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
 using ProyectoTFG.Data;
+using ProyectoTFG.Data.Toast;
+using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddHttpClient();
+builder.Services.AddSyncfusionBlazor();
+builder.Services.AddSingleton<ToastService>();
 
 var connectionString = builder.Configuration.GetConnectionString("HospitalDB");
 

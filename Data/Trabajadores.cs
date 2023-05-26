@@ -5,7 +5,7 @@ namespace ProyectoTFG.Data;
 
 public partial class Trabajadores
 {
-    public long Idtrab { get; set; }
+    public int Idtrab { get; set; }
 
     public string TrabNombre { get; set; } = null!;
 
@@ -23,5 +23,5 @@ public partial class Trabajadores
 
     public string? TrabTel { get; set; }
 
-    public byte[]? TrabFechNa { get; set; }
+    public DateTime TrabFechNa { get; set; }
 }

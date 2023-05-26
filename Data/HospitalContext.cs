@@ -4,30 +4,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoTFG.Data;
 
-public partial class HospitalContext : DbContext
+public class HospitalContext : DbContext
 {
-    public HospitalContext()
+    protected readonly IConfiguration Configuration;
+
+    public DbSet<Atendido> Atendidos { get; set; }
+
+    public DbSet<Cita> Citas { get; set; }
+
+    public DbSet<Pacientes> Pacientes { get; set; }
+
+    public DbSet<Trabajadores> Trabajadores { get; set; }
+
+    public DbSet<Usuario> Usuarios { get; set; }
+
+    public HospitalContext(IConfiguration configuration)
     {
+        Configuration = configuration;
     }
-
-    public HospitalContext(DbContextOptions<HospitalContext> options)
-        : base(options)
-    {
-    }
-
-    public virtual DbSet<Atendido> Atendidos { get; set; }
-
-    public virtual DbSet<Cita> Citas { get; set; }
-
-    public virtual DbSet<Pacientes> Pacientes { get; set; }
-
-    public virtual DbSet<Trabajadores> Trabajadores { get; set; }
-
-    public virtual DbSet<Usuario> Usuarios { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlite("Data Source=Data\\\\\\\\hospital.db");
+    {
+        optionsBuilder.UseSqlite("Data Source=Data\\\\\\\\hospital.db");
+    }
+        
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -117,7 +116,7 @@ public partial class HospitalContext : DbContext
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("trabPuesto");
             entity.Property(e => e.TrabSexo)
-                .HasColumnType("CHAR(1)")
+                .HasColumnType("VARCHAR(50)")
                 .HasColumnName("trabSexo");
             entity.Property(e => e.TrabTel)
                 .HasColumnType("VARCHAR(15)")
@@ -146,8 +145,41 @@ public partial class HospitalContext : DbContext
                 .HasColumnName("usuTrabId");
         });
 
-        OnModelCreatingPartial(modelBuilder);
-    }
+        modelBuilder.Entity<Pacientes>()
+            .HasData(
+            new Pacientes { 
+                PacNombre="Paciente1", 
+                PacApellido="Apellido2", 
+                PacSexo="M", PacGs="A+",
+                PacDireccion="direccion", 
+                PacFechRegistro=DateTime.Now
+            },
+            new Pacientes { PacNombre = "Paciente2", 
+                PacApellido = "Apellido3", 
+                PacSexo = "F", 
+                PacGs = "0+", 
+                PacDireccion = "direccion", 
+                PacFechRegistro = DateTime.Now }
+        );
 
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        modelBuilder.Entity<Trabajadores>()
+            .HasData(new Trabajadores {
+                TrabNombre = "Nombre",
+                TrabApellido = "Apellido",
+                TrabDireccion = "Dirección",
+                TrabFechNa = DateTime.Now,
+                TrabHorario = "Horario",
+                TrabPuesto = "Puesto",
+                TrabSexo = "M",
+                TrabTel = "Teléfono",
+                TrabCorreo = "Correo"
+            });
+
+        modelBuilder.Entity<Usuario>()
+            .HasData(new Usuario {
+                UsuNombre = "admin",
+                UsuPwd = "1",
+                UsuRol = "admin",
+            });
+    }
 }

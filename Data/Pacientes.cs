@@ -6,7 +6,7 @@ namespace ProyectoTFG.Data;
 
 public partial class Pacientes
 {
-    public long Idpac { get; set; }
+    public int Idpac { get; set; }
 
     public string PacNombre { get; set; } = null!;
 
@@ -18,5 +18,5 @@ public partial class Pacientes
 
     public string? PacGs { get; set; } //Grupo sanguineo
 
-    public Datetime PacFechRegistro { get; set; }
+    public DateTime PacFechRegistro { get; set; }
 }

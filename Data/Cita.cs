@@ -5,13 +5,13 @@ namespace ProyectoTFG.Data;
 
 public partial class Cita
 {
-    public long IdCita { get; set; }
+    public int IdCita { get; set; }
 
-    public long PacienteId { get; set; }
+    public int PacienteId { get; set; }
 
-    public long TrabajadorId { get; set; }
+    public int TrabajadorId { get; set; }
 
-    public byte[] Fecha { get; set; } = null!;
+    public DateTime Fecha { get; set; }
 
-    public long Duracion { get; set; }
+    public int Duracion { get; set; }
 }

@@ -5,7 +5,7 @@ namespace ProyectoTFG.Data;
 
 public partial class Usuario
 {
-    public long Idusu { get; set; }
+    public int Idusu { get; set; }
 
     public string UsuNombre { get; set; } = null!;
 
@@ -13,5 +13,5 @@ public partial class Usuario
 
     public string UsuRol { get; set; } = null!;
 
-    public long UsuTrabId { get; set; }
+    public int UsuTrabId { get; set; }
 }

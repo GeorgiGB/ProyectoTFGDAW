@@ -1,0 +1,19 @@
+﻿@using Syncfusion.Blazor.Notifications;
+
+<SfToast @ref="@Toast" CssClass="e-toast-success" Timeout=3000>
+    <ToastTemplates>
+        <Title>
+            @Options.Title 
+        </Title>
+        <Content>
+            @Options.Content 
+        </Content>
+    </ToastTemplates>
+    <ToastPosition X="Right"></ToastPosition>
+</SfToast>
+
+<style>
+    .toast-icons.e-success::before {
+        content: "\e701";
+    }
+</style>

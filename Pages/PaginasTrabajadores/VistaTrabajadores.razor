@@ -1,0 +1,17 @@
+﻿@page "/api/trabajadores"
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<HospitalContext> HospitalDBContext;
+@using Syncfusion.Blazor.Cards
+
+<PageTitle>Vista de Trabajadores</PageTitle>
+
+@foreach (var trabajador in TrabajadoresMostrados)
+{
+    <SfCard>
+        <CardHeader Title="@($"{trabajador.TrabNombre} {trabajador.TrabApellido}")"></CardHeader>
+            <CardContent>
+                <p>@trabajador.TrabPuesto</p>
+            </CardContent>
+    </SfCard>
+}

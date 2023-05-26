@@ -1,0 +1,25 @@
+﻿@page "/api/pacientes"
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<HospitalContext> HospitalDBContext;
+@using Syncfusion.Blazor.Grids;
+
+<PageTitle>Vista Pacientes</PageTitle>
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <SfGrid DataSource="@PacientesMostrados" AllowPaging="true">
+                <GridColumns>
+                    <GridColumn Field=@nameof(Pacientes.Idpac) HeaderText="ID"></GridColumn>
+                    <GridColumn Field=@nameof(Pacientes.PacNombre) HeaderText="Nombre"></GridColumn>
+                    <GridColumn Field=@nameof(Pacientes.PacApellido) HeaderText="Apellido"></GridColumn>
+                    <GridColumn Field=@nameof(Pacientes.PacDireccion) HeaderText="Dirección"></GridColumn>
+                    <GridColumn Field=@nameof(Pacientes.PacFechRegistro) HeaderText="Fecha de Registro"></GridColumn>
+                    <GridColumn Field=@nameof(Pacientes.PacGs) HeaderText="Grupo Sanguíneo"></GridColumn>
+                    <GridColumn Field=@nameof(Pacientes.PacSexo) HeaderText="Sexo"></GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </div>
+</div>
