@@ -23,6 +23,13 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\logo-1024-1024-clean.png" />
+    <None Include="wwwroot\Images\logo-512x512-preview.png" />
+    <None Include="wwwroot\Images\logo.jfif" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@ using ProyectoTFG.Data.Toast;
 
 namespace ProyectoTFG.Componentes.Formularios
 {
-    public partial class IniciarSesion
+    public partial class FormIniciarSesion
     {
         public Usuario UsuarioIniciado = new();
 

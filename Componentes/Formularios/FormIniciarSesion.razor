@@ -1,0 +1,77 @@
+﻿<!--PAGINA PARA EL FORMULARIO DE INICIAR SESION-->
+<!--<EditForm Model="@UsuarioIniciado" OnValidSubmit="@iniciarSesion">
+    <div class="w-full max-w-xs text-center">
+        <form class="bg-white shadow-md rounded px-8 pt-8 pb-8 mb-4">
+            <div class="mb-4">
+                <InputEstandar TextoMostrado="Nombre de Usuario" ReciboValor="@UsuarioIniciado.UsuNombre"></InputEstandar>
+            </div>
+            <div class="mb-6">
+                <InputEstandar TextoMostrado="Introduzca contrasena" TipoInput="password" ReciboValor="@UsuarioIniciado.UsuPwd"></InputEstandar>
+            </div>
+            <div class="flex items-center justify-between">
+                <BotonConSombraBarra TextoBoton="Iniciar Sesion" ColorBoton="purple"></BotonConSombraBarra>
+            </div>
+        </form>
+        <p class="text-center text-gray-500 text-xs">
+            &copy;2023 Salud Total Corp. Todos los derechos reservados.
+        </p>
+    </div>
+</EditForm>-->
+
+<section class="gradient-form h-full bg-neutral-200 dark:bg-neutral-500">
+    <div class="container h-full p-10">
+        <div class="g-6 flex h-full flex-wrap items-center justify-center text-black-800 dark:text-black-200">
+            <div class="w-full">
+                <div class="block rounded-lg bg-white shadow-lg ">
+                    <div class="g-0 lg:flex lg:flex-wrap">
+                        <!-- Left column container-->
+                        <div class="px-4 md:px-0 lg:w-6/12">
+                            <div class="md:mx-6 md:p-12">
+                                <!--Logo-->
+                                <div class="text-center">
+                                    <img class="mx-auto w-48"
+                                         src= "Images/logo-1024-1024-clean.png"
+                                         alt="logo" />
+                                    <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">
+                                        Somos Salud
+                                    </h4>
+                                </div>
+                                <p class="mb-4 font-bold">Por favor inicie sesion</p>
+                                <EditForm Model="@UsuarioIniciado" OnValidSubmit="@iniciarSesion">
+                                    <!--Nombre usuario-->
+                                    <div class="mb-4">
+                                        <InputEstandar TextoMostrado="Nombre de Usuario" ReciboValor="@UsuarioIniciado.UsuNombre"></InputEstandar>
+                                    </div>
+                                    <!--PWD usuario-->
+                                    <div class="mb-6">
+                                        <InputEstandar TextoMostrado="Introduzca contrasena" TipoInput="password" ReciboValor="@UsuarioIniciado.UsuPwd"></InputEstandar>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <BotonConSombraBarra TextoBoton="Iniciar Sesion" ColorBoton="emerald"></BotonConSombraBarra>
+                                    </div>
+                                </EditForm>
+                            </div>
+                        </div>
+
+                        <!-- Right column container with background and description-->
+                        <div class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
+                             style="background: linear-gradient(to right, #1776d1, #78b7f4, #78b7f4, #1776d1)">
+                            <div class="px-4 py-6 text-white md:mx-6 md:p-12">
+                                <h4 class="mb-6 text-xl font-semibold">
+                                    Mas que salud
+                                </h4>
+                                <p class="text-sm">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit, sed do eiusmod tempor incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                                    nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                    ea commodo consequat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
