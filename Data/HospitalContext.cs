@@ -24,7 +24,9 @@ public class HospitalContext : DbContext
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=Data\\\\\\\\hospital.db");
+        optionsBuilder.
+            EnableSensitiveDataLogging()
+            .UseSqlite("Data Source=Data\\\\\\\\hospital.db");
     }
         
 
@@ -47,7 +49,7 @@ public class HospitalContext : DbContext
             entity.Property(e => e.IdCita)
                 .ValueGeneratedNever()
                 .HasColumnType("INT")
-                .HasColumnName("idCita");
+                .HasColumnName("IdCita");
             entity.Property(e => e.Duracion).HasColumnType("INT");
             entity.Property(e => e.Fecha).HasColumnType("DATETIME");
             entity.Property(e => e.PacienteId)
@@ -60,12 +62,12 @@ public class HospitalContext : DbContext
 
         modelBuilder.Entity<Pacientes>(entity =>
         {
-            entity.HasKey(e => e.Idpac);
+            entity.HasKey(e => e.IdPac);
 
-            entity.Property(e => e.Idpac)
+            entity.Property(e => e.IdPac)
                 .ValueGeneratedNever()
                 .HasColumnType("INT")
-                .HasColumnName("idpac");
+                .HasColumnName("IdPac");
             entity.Property(e => e.PacApellido)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("pacApellido");
@@ -88,12 +90,12 @@ public class HospitalContext : DbContext
 
         modelBuilder.Entity<Trabajadores>(entity =>
         {
-            entity.HasKey(e => e.Idtrab);
+            entity.HasKey(e => e.IdTrab);
 
-            entity.Property(e => e.Idtrab)
+            entity.Property(e => e.IdTrab)
                 .ValueGeneratedNever()
                 .HasColumnType("INT")
-                .HasColumnName("idtrab");
+                .HasColumnName("IdTrab");
             entity.Property(e => e.TrabApellido)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("trabApellido");
@@ -125,12 +127,12 @@ public class HospitalContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Idusu);
+            entity.HasKey(e => e.IdUsu);
 
-            entity.Property(e => e.Idusu)
+            entity.Property(e => e.IdUsu)
                 .ValueGeneratedNever()
                 .HasColumnType("INT")
-                .HasColumnName("idusu");
+                .HasColumnName("IdUsu");
             entity.Property(e => e.UsuNombre)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("usuNombre");
@@ -147,14 +149,17 @@ public class HospitalContext : DbContext
 
         modelBuilder.Entity<Pacientes>()
             .HasData(
-            new Pacientes { 
-                PacNombre="Paciente1", 
+            new Pacientes {
+                IdPac = 1,
+                PacNombre="Paciente12", 
                 PacApellido="Apellido2", 
                 PacSexo="M", PacGs="A+",
                 PacDireccion="direccion", 
                 PacFechRegistro=DateTime.Now
             },
-            new Pacientes { PacNombre = "Paciente2", 
+            new Pacientes { 
+                IdPac = 2,
+                PacNombre = "Paciente2", 
                 PacApellido = "Apellido3", 
                 PacSexo = "F", 
                 PacGs = "0+", 
@@ -177,6 +182,7 @@ public class HospitalContext : DbContext
 
         modelBuilder.Entity<Usuario>()
             .HasData(new Usuario {
+                IdUsu = 1,
                 UsuNombre = "admin",
                 UsuPwd = "1",
                 UsuRol = "admin",

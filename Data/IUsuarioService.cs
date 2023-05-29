@@ -1,6 +1,4 @@
-﻿using ProyectoTFG.Models;
-
-namespace ProyectoTFG.Data
+﻿namespace ProyectoTFG.Data
 {
     public interface IUsuarioService
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using ProyectoTFG.Componentes.Widgets;
-using ProyectoTFG.Data.Toast;
 using ProyectoTFG.Data;
+using ProyectoTFG.Data.Toast;
 
 namespace ProyectoTFG.Componentes.Formularios
 {
@@ -10,7 +10,7 @@ namespace ProyectoTFG.Componentes.Formularios
     {
         public Usuario UsuarioIniciado = new();
 
-        [Inject] public ToastService Toast { get; set; }
+        [Inject] public ToastService? Toast { get; set; }
 
         private async Task iniciarSesion()
         {

@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProyectoTFG.Models;
 
 namespace ProyectoTFG.Data
 {
     public class UsuarioService : IUsuarioService
     {
-        private readonly UsuariosDbContext _context;
+        private readonly HospitalContext _context;
 
-        public UsuarioService(UsuariosDbContext context)
+        public UsuarioService(HospitalContext context)
         {
             _context = context;
         }
@@ -50,7 +49,7 @@ namespace ProyectoTFG.Data
          */
         public async Task<bool> SaveUsuario(Usuario usuario)
         {
-            if (usuario.id > 0 )
+            if (usuario.IdUsu > 0 )
                 return await UpdateUsuario(usuario);
             else
                 return await AgregarUsuario(usuario);

@@ -1,4 +1,4 @@
-﻿namespace ProyectoTFG.Componentes
+﻿namespace ProyectoTFG.Componentes.Formularios
 {
     public partial class FormularioCrearUsuario
     {

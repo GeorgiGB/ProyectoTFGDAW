@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ProyectoTFG.Data;
 
 public partial class Usuario
 {
-    public int Idusu { get; set; }
+    public int IdUsu { get; set; }
 
     public string UsuNombre { get; set; } = null!;
 

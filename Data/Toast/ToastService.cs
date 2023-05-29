@@ -6,7 +6,7 @@
         public async Task ShowToast(ToastOption options)
         {
             //Invoke ToastComponent to update and show the toast with messages  
-            this.ShowToastTrigger.Invoke(options);
+            ShowToastTrigger.Invoke(options);
         }
     }
 }

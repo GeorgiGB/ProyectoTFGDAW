@@ -1,9 +1,9 @@
-﻿using ProyectoTFG.Models;
+﻿using ProyectoTFG.Data;
 
 namespace ProyectoTFG.Pages
 {
     public partial class VistaUsuarios
     {
-        private Usuario Usuario { get; set; }
+        public List<Usuario> VistaUsuario { get; set; }
     }
 }

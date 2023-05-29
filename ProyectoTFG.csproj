@@ -16,8 +16,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Syncfusion.Blazor" Version="21.2.5" />
+    <PackageReference Include="Syncfusion.Blazor.Cards" Version="21.2.5" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="21.2.5" />
     <PackageReference Include="Syncfusion.Licensing" Version="21.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

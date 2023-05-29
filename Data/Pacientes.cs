@@ -6,7 +6,7 @@ namespace ProyectoTFG.Data;
 
 public partial class Pacientes
 {
-    public int Idpac { get; set; }
+    public int IdPac { get; set; }
 
     public string PacNombre { get; set; } = null!;
 
