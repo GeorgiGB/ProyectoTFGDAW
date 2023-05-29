@@ -7,5 +7,7 @@ namespace ProyectoTFG.Componentes.Widgets
         [Parameter] public string TextoBoton { get; set; } = "Falta texto";
 
         [Parameter] public string RutaAIr { get; set; } = "/";
+
+        [Parameter] public string ColorBoton { get; set; } = "blue";
     }
 }
