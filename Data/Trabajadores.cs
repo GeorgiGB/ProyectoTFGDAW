@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProyectoTFG.Data;
 
 public partial class Trabajadores
-{
+{   
     public int IdTrab { get; set; }
 
     public string TrabNombre { get; set; } = null!;

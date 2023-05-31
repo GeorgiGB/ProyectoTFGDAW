@@ -17,7 +17,7 @@ namespace ProyectoTFG.Componentes.Formularios
             string nombreUsuario = UsuarioIniciado.UsuNombre;
             string nombrePwd = UsuarioIniciado.UsuPwd;
 
-            await Toast.ShowToast(new ToastOption() { Title = "Exito!", Content = "Se ha enviado la notificacion" });
+            Toast.ShowToast(new ToastOption() { Title = "Exito!", Content = "Se ha enviado la notificacion" });
         }
 /*
         private DatosDataContext? _context;

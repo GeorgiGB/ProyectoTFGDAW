@@ -94,8 +94,7 @@ public class HospitalContext : DbContext
 
             entity.Property(e => e.IdTrab)
                 .ValueGeneratedNever()
-                .HasColumnType("INT")
-                .HasColumnName("IdTrab");
+                .HasColumnName("idtrab");
             entity.Property(e => e.TrabApellido)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("trabApellido");
@@ -147,7 +146,7 @@ public class HospitalContext : DbContext
                 .HasColumnName("usuTrabId");
         });
 
-        modelBuilder.Entity<Pacientes>()
+        /*modelBuilder.Entity<Pacientes>()
             .HasData(
             new Pacientes {
                 IdPac = 1,
@@ -186,6 +185,6 @@ public class HospitalContext : DbContext
                 UsuNombre = "admin",
                 UsuPwd = "1",
                 UsuRol = "admin",
-            });
+            });*/
     }
 }

@@ -5,23 +5,32 @@
 @using Syncfusion.Blazor.Grids;
 
 <PageTitle>Vista Pacientes</PageTitle>
+<BarraSuperior></BarraSuperior>
 
-<BarraBusqueda Busqueda="Filtrar Trabajador"></BarraBusqueda>
 
-<div class="col-lg-12 control-section">
-    <div class="content-wrapper">
-        <div class="row">
-            <SfGrid DataSource="@PacientesMostrados" AllowPaging="true">
-                <GridColumns>
-                    <GridColumn Field=@nameof(Pacientes.IdPac) HeaderText="ID"></GridColumn>
-                    <GridColumn Field=@nameof(Pacientes.PacNombre) HeaderText="Nombre"></GridColumn>
-                    <GridColumn Field=@nameof(Pacientes.PacApellido) HeaderText="Apellido"></GridColumn>
-                    <GridColumn Field=@nameof(Pacientes.PacDireccion) HeaderText="Dirección"></GridColumn>
-                    <GridColumn Field=@nameof(Pacientes.PacFechRegistro) HeaderText="Fecha de Registro"></GridColumn>
-                    <GridColumn Field=@nameof(Pacientes.PacGs) HeaderText="Grupo Sanguíneo"></GridColumn>
-                    <GridColumn Field=@nameof(Pacientes.PacSexo) HeaderText="Sexo"></GridColumn>
-                </GridColumns>
-            </SfGrid>
+
+<div class="flex">
+    <div class="w-1/7 bg-gray-700">
+        <BarraLateral></BarraLateral>
+    </div>
+    <div class="w-3/4">
+        <div class="col-lg-12 control-section">
+            <div class="content-wrapper">
+                <div class="row">
+                    <BarraBusqueda Busqueda="Filtrar Trabajador"></BarraBusqueda>
+                    <SfGrid DataSource="@PacientesMostrados" AllowPaging="true">
+                        <GridColumns>
+                            <GridColumn Field=@nameof(Pacientes.IdPac) HeaderText="ID"></GridColumn>
+                            <GridColumn Field=@nameof(Pacientes.PacNombre) HeaderText="Nombre"></GridColumn>
+                            <GridColumn Field=@nameof(Pacientes.PacApellido) HeaderText="Apellido"></GridColumn>
+                            <GridColumn Field=@nameof(Pacientes.PacDireccion) HeaderText="Dirección"></GridColumn>
+                            <GridColumn Field=@nameof(Pacientes.PacFechRegistro) HeaderText="Fecha de Registro"></GridColumn>
+                            <GridColumn Field=@nameof(Pacientes.PacGs) HeaderText="Grupo Sanguíneo"></GridColumn>
+                            <GridColumn Field=@nameof(Pacientes.PacSexo) HeaderText="Sexo"></GridColumn>
+                        </GridColumns>
+                    </SfGrid>
+                </div>
+            </div>
         </div>
     </div>
 </div>

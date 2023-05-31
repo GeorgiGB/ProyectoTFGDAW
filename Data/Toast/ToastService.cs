@@ -3,7 +3,7 @@
     public class ToastService
     {
         public event Action<ToastOption> ShowToastTrigger;
-        public async Task ShowToast(ToastOption options)
+        public void ShowToast(ToastOption options)
         {
             //Invoke ToastComponent to update and show the toast with messages  
             ShowToastTrigger.Invoke(options);

@@ -20,9 +20,9 @@ namespace ProyectoTFG.Data
 
         public async Task<bool> DeleteTrabajador(int id)
         {
-            var user = await _context.Usuarios.FindAsync(id);
+            var trabajador = await _context.Trabajadores.FindAsync(id);
 
-            _context.Usuarios.Remove(user);
+            _context.Trabajadores.Remove(trabajador);
 
             return await _context.SaveChangesAsync() > 0;
         }

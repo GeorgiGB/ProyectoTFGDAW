@@ -39,7 +39,7 @@ namespace ProyectoTFG.Pages.PaginasTrabajadores
         private async void HandleValidSubmit()
         {
             await TrabajadorService.UpdateTrabajador(trabajadorSeleccionado);
-            await ToastService.ShowToast(new ToastOption
+            ToastService.ShowToast(new ToastOption
             {
                 Title = "Exito",
                 Content = "El trabajador se ha actualizado correctamente"
