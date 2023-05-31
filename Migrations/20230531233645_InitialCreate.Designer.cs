@@ -11,7 +11,7 @@ using ProyectoTFG.Data;
 namespace ProyectoTFG.Migrations
 {
     [DbContext(typeof(HospitalContext))]
-    [Migration("20230529080338_InitialCreate")]
+    [Migration("20230531233645_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -23,10 +23,10 @@ namespace ProyectoTFG.Migrations
             modelBuilder.Entity("ProyectoTFG.Data.Atendido", b =>
                 {
                     b.Property<long>("TrabajadorId")
-                        .HasColumnType("INT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<long>("PacienteId")
-                        .HasColumnType("INT");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("TrabajadorId", "PacienteId");
 
@@ -36,21 +36,21 @@ namespace ProyectoTFG.Migrations
             modelBuilder.Entity("ProyectoTFG.Data.Cita", b =>
                 {
                     b.Property<int>("IdCita")
-                        .HasColumnType("INT")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("IdCita");
 
                     b.Property<int>("Duracion")
-                        .HasColumnType("INT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("DATETIME");
 
                     b.Property<int>("PacienteId")
-                        .HasColumnType("INT")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("PacienteID");
 
                     b.Property<int>("TrabajadorId")
-                        .HasColumnType("INT")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("TrabajadorID");
 
                     b.HasKey("IdCita");
@@ -61,7 +61,7 @@ namespace ProyectoTFG.Migrations
             modelBuilder.Entity("ProyectoTFG.Data.Pacientes", b =>
                 {
                     b.Property<int>("IdPac")
-                        .HasColumnType("INT")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("IdPac");
 
                     b.Property<string>("PacApellido")
@@ -93,35 +93,14 @@ namespace ProyectoTFG.Migrations
                     b.HasKey("IdPac");
 
                     b.ToTable("Pacientes");
-
-                    b.HasData(
-                        new
-                        {
-                            IdPac = 1,
-                            PacApellido = "Apellido2",
-                            PacDireccion = "direccion",
-                            PacFechRegistro = new DateTime(2023, 5, 29, 10, 3, 38, 124, DateTimeKind.Local).AddTicks(5918),
-                            PacGs = "A+",
-                            PacNombre = "Paciente12",
-                            PacSexo = "M"
-                        },
-                        new
-                        {
-                            IdPac = 2,
-                            PacApellido = "Apellido3",
-                            PacDireccion = "direccion",
-                            PacFechRegistro = new DateTime(2023, 5, 29, 10, 3, 38, 124, DateTimeKind.Local).AddTicks(5951),
-                            PacGs = "0+",
-                            PacNombre = "Paciente2",
-                            PacSexo = "F"
-                        });
                 });
 
             modelBuilder.Entity("ProyectoTFG.Data.Trabajadores", b =>
                 {
                     b.Property<int>("IdTrab")
-                        .HasColumnType("INT")
-                        .HasColumnName("IdTrab");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("idtrab");
 
                     b.Property<string>("TrabApellido")
                         .IsRequired()
@@ -136,9 +115,9 @@ namespace ProyectoTFG.Migrations
                         .HasColumnType("VARCHAR(100)")
                         .HasColumnName("trabDireccion");
 
-                    b.Property<DateTime>("TrabFechNa")
+                    b.Property<DateTime>("TrabFechaContrato")
                         .HasColumnType("DATE")
-                        .HasColumnName("trabFechNa");
+                        .HasColumnName("trabFechaContrato");
 
                     b.Property<string>("TrabHorario")
                         .HasColumnType("VARCHAR(50)")
@@ -161,30 +140,16 @@ namespace ProyectoTFG.Migrations
                         .HasColumnType("VARCHAR(15)")
                         .HasColumnName("trabTel");
 
-                    b.HasKey("IdTrab");
+                    b.HasKey("IdTrab")
+                        .HasName("PrimaryKey_idtrab");
 
                     b.ToTable("Trabajadores");
-
-                    b.HasData(
-                        new
-                        {
-                            IdTrab = 0,
-                            TrabApellido = "Apellido",
-                            TrabCorreo = "Correo",
-                            TrabDireccion = "Dirección",
-                            TrabFechNa = new DateTime(2023, 5, 29, 10, 3, 38, 124, DateTimeKind.Local).AddTicks(6054),
-                            TrabHorario = "Horario",
-                            TrabNombre = "Nombre",
-                            TrabPuesto = "Puesto",
-                            TrabSexo = "M",
-                            TrabTel = "Teléfono"
-                        });
                 });
 
             modelBuilder.Entity("ProyectoTFG.Data.Usuario", b =>
                 {
                     b.Property<int>("IdUsu")
-                        .HasColumnType("INT")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("IdUsu");
 
                     b.Property<string>("UsuNombre")
@@ -203,22 +168,12 @@ namespace ProyectoTFG.Migrations
                         .HasColumnName("usuRol");
 
                     b.Property<int>("UsuTrabId")
-                        .HasColumnType("INT")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("usuTrabId");
 
                     b.HasKey("IdUsu");
 
                     b.ToTable("Usuarios");
-
-                    b.HasData(
-                        new
-                        {
-                            IdUsu = 1,
-                            UsuNombre = "admin",
-                            UsuPwd = "1",
-                            UsuRol = "admin",
-                            UsuTrabId = 0
-                        });
                 });
 #pragma warning restore 612, 618
         }

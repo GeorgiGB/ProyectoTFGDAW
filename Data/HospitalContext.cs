@@ -38,8 +38,8 @@ public class HospitalContext : DbContext
 
             entity.ToTable("Atendido");
 
-            entity.Property(e => e.TrabajadorId).HasColumnType("INT");
-            entity.Property(e => e.PacienteId).HasColumnType("INT");
+            entity.Property(e => e.TrabajadorId).HasColumnType("INTEGER");
+            entity.Property(e => e.PacienteId).HasColumnType("INTEGER");
         });
 
         modelBuilder.Entity<Cita>(entity =>
@@ -48,15 +48,15 @@ public class HospitalContext : DbContext
 
             entity.Property(e => e.IdCita)
                 .ValueGeneratedNever()
-                .HasColumnType("INT")
+                .HasColumnType("INTEGER")
                 .HasColumnName("IdCita");
-            entity.Property(e => e.Duracion).HasColumnType("INT");
+            entity.Property(e => e.Duracion).HasColumnType("INTEGER");
             entity.Property(e => e.Fecha).HasColumnType("DATETIME");
             entity.Property(e => e.PacienteId)
-                .HasColumnType("INT")
+                .HasColumnType("INTEGER")
                 .HasColumnName("PacienteID");
             entity.Property(e => e.TrabajadorId)
-                .HasColumnType("INT")
+                .HasColumnType("INTEGER")
                 .HasColumnName("TrabajadorID");
         });
 
@@ -66,7 +66,7 @@ public class HospitalContext : DbContext
 
             entity.Property(e => e.IdPac)
                 .ValueGeneratedNever()
-                .HasColumnType("INT")
+                .HasColumnType("INTEGER")
                 .HasColumnName("IdPac");
             entity.Property(e => e.PacApellido)
                 .HasColumnType("VARCHAR(50)")
@@ -90,11 +90,13 @@ public class HospitalContext : DbContext
 
         modelBuilder.Entity<Trabajadores>(entity =>
         {
-            entity.HasKey(e => e.IdTrab);
+            entity.HasKey(e => e.IdTrab)
+                .HasName("PrimaryKey_idtrab");
 
             entity.Property(e => e.IdTrab)
-                .ValueGeneratedNever()
-                .HasColumnName("idtrab");
+                .ValueGeneratedOnAdd()
+                .HasColumnType("INTEGER")
+                 .HasColumnName("idtrab");
             entity.Property(e => e.TrabApellido)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("trabApellido");
@@ -130,7 +132,7 @@ public class HospitalContext : DbContext
 
             entity.Property(e => e.IdUsu)
                 .ValueGeneratedNever()
-                .HasColumnType("INT")
+                .HasColumnType("INTEGER")
                 .HasColumnName("IdUsu");
             entity.Property(e => e.UsuNombre)
                 .HasColumnType("VARCHAR(50)")
@@ -142,7 +144,7 @@ public class HospitalContext : DbContext
                 .HasColumnType("VARCHAR(20)")
                 .HasColumnName("usuRol");
             entity.Property(e => e.UsuTrabId)
-                .HasColumnType("INT")
+                .HasColumnType("INTEGER")
                 .HasColumnName("usuTrabId");
         });
 

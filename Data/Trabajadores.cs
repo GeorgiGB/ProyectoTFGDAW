@@ -6,7 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ProyectoTFG.Data;
 
 public partial class Trabajadores
-{   
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int IdTrab { get; set; }
 
     public string TrabNombre { get; set; } = null!;

@@ -21,7 +21,11 @@ namespace ProyectoTFG.Pages.PaginasTrabajadores
         // Método para borrar el trabajador
         private async void BorrarTrabajador()
         {
-            await TrabajadorService.DeleteTrabajador(trabajadorSeleccionado.IdTrab);
+            if (trabajadorSeleccionado.IdTrab != null)
+            {
+                await TrabajadorService.DeleteTrabajador((int)trabajadorSeleccionado.IdTrab);
+            }
+            
         }
 
 

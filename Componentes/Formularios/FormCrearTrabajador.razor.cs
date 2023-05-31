@@ -42,6 +42,7 @@ namespace ProyectoTFG.Componentes.Formularios
         {
             NuevoTrabajador.TrabFechaContrato = DateTime.Now;
             context?.Trabajadores.Add(NuevoTrabajador);
+            context?.SaveChanges();
         }
 
         public void LimpiarYActualizarFormulario()
