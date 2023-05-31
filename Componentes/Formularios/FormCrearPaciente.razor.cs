@@ -4,7 +4,7 @@ using ProyectoTFG.Data;
 
 namespace ProyectoTFG.Componentes.Formularios
 {
-    public partial class FormPaciente
+    public partial class FormCrearPaciente
     {
         private HospitalContext _context;
 

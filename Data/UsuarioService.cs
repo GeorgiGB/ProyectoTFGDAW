@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProyectoTFG.Interfaces;
 
 namespace ProyectoTFG.Data
 {

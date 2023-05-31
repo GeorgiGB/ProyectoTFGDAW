@@ -1,35 +1,17 @@
 ﻿<!--PAGINA PARA EL FORMULARIO DE INICIAR SESION-->
-<!--<EditForm Model="@UsuarioIniciado" OnValidSubmit="@iniciarSesion">
-    <div class="w-full max-w-xs text-center">
-        <form class="bg-white shadow-md rounded px-8 pt-8 pb-8 mb-4">
-            <div class="mb-4">
-                <InputEstandar TextoMostrado="Nombre de Usuario" ReciboValor="@UsuarioIniciado.UsuNombre"></InputEstandar>
-            </div>
-            <div class="mb-6">
-                <InputEstandar TextoMostrado="Introduzca contrasena" TipoInput="password" ReciboValor="@UsuarioIniciado.UsuPwd"></InputEstandar>
-            </div>
-            <div class="flex items-center justify-between">
-                <BotonConSombraBarra TextoBoton="Iniciar Sesion" ColorBoton="purple"></BotonConSombraBarra>
-            </div>
-        </form>
-        <p class="text-center text-gray-500 text-xs">
-            &copy;2023 Salud Total Corp. Todos los derechos reservados.
-        </p>
-    </div>
-</EditForm>-->
 
-<section class="gradient-form h-full bg-neutral-200 dark:bg-neutral-500">
-    <div class="container h-full p-10">
-        <div class="g-6 flex h-full flex-wrap items-center justify-center text-black-800 dark:text-black-200">
+<section class="gradient-form flex items-center justify-center">
+    <div class="container p-10">
+        <div class="g-6 flex flex-wrap items-center justify-center text-black-800 dark:text-black-200">
             <div class="w-full">
                 <div class="block rounded-lg bg-white shadow-lg ">
                     <div class="g-0 lg:flex lg:flex-wrap">
-                        <!-- Left column container-->
+                        <!-- Parte izquierda donde ira el formulario-->
                         <div class="px-4 md:px-0 lg:w-6/12">
                             <div class="md:mx-6 md:p-12">
                                 <!--Logo-->
                                 <div class="text-center">
-                                    <img class="mx-auto w-48"
+                                    <img class="mx-auto w-64"
                                          src= "Images/logo-1024-1024-clean.png"
                                          alt="logo" />
                                     <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">
@@ -44,18 +26,18 @@
                                     </div>
                                     <!--PWD usuario-->
                                     <div class="mb-6">
-                                        <InputEstandar TextoMostrado="Introduzca contrasena" TipoInput="password" ReciboValor="@UsuarioIniciado.UsuPwd"></InputEstandar>
+                                        <InputEstandar TextoMostrado="Introduzca contraseña" TipoInput="password" ReciboValor="@UsuarioIniciado.UsuPwd"></InputEstandar>
                                     </div>
                                     <div class="flex items-center justify-between">
-                                        <BotonConSombraBarra TextoBoton="Iniciar Sesion" ColorBoton="emerald"></BotonConSombraBarra>
+                                        <BotonConSombra TextoBoton="Iniciar Sesion" ColorBoton="cyan" Ruta="/api/trabajadores"></BotonConSombra>
                                     </div>
                                 </EditForm>
                             </div>
                         </div>
 
-                        <!-- Right column container with background and description-->
+                        <!-- Columna de la derecha para poner el texto -->
                         <div class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
-                             style="background: linear-gradient(to right, #1776d1, #78b7f4, #78b7f4, #1776d1)">
+                             style="background: linear-gradient(to right, #438d8c , #56b5b4, #60cac8,#56b5b4, #438d8c )">
                             <div class="px-4 py-6 text-white md:mx-6 md:p-12">
                                 <h4 class="mb-6 text-xl font-semibold">
                                     Mas que salud

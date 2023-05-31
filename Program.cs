@@ -12,6 +12,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
 builder.Services.AddSyncfusionBlazor();
+builder.Services.AddScoped<ToastService>();
+builder.Services.AddScoped<TrabajadorService>();
+builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddSingleton<ToastService>();
 
 var connectionString = builder.Configuration.GetConnectionString("HospitalDB");
