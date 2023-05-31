@@ -23,5 +23,5 @@ public partial class Trabajadores
 
     public string? TrabTel { get; set; }
 
-    public DateTime TrabFechNa { get; set; }
+    public DateTime TrabFechaContrato { get; set; }
 }

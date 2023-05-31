@@ -105,9 +105,9 @@ public class HospitalContext : DbContext
             entity.Property(e => e.TrabDireccion)
                 .HasColumnType("VARCHAR(100)")
                 .HasColumnName("trabDireccion");
-            entity.Property(e => e.TrabFechNa)
+            entity.Property(e => e.TrabFechaContrato)
                 .HasColumnType("DATE")
-                .HasColumnName("trabFechNa");
+                .HasColumnName("trabFechaContrato");
             entity.Property(e => e.TrabHorario)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("trabHorario");
@@ -172,7 +172,7 @@ public class HospitalContext : DbContext
                 TrabNombre = "Nombre",
                 TrabApellido = "Apellido",
                 TrabDireccion = "Dirección",
-                TrabFechNa = DateTime.Now,
+                TrabFechaContrato = DateTime.Now,
                 TrabHorario = "Horario",
                 TrabPuesto = "Puesto",
                 TrabSexo = "M",
