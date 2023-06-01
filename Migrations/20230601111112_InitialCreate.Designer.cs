@@ -11,7 +11,7 @@ using ProyectoTFG.Data;
 namespace ProyectoTFG.Migrations
 {
     [DbContext(typeof(HospitalContext))]
-    [Migration("20230531233645_InitialCreate")]
+    [Migration("20230601111112_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -1,26 +1,38 @@
-﻿<EditForm Model="NuevoTrabajador" OnValidSubmit="@CrearTrabajador">
-	<DataAnnotationsValidator />
-	<ValidationSummary/>
-    <label for="TrabNombre">Nombre:</label>
-    <InputText id="TrabNombre" @bind-Value="NuevoTrabajador.TrabNombre" /><br><br>
-    <label for="TrabApellido">Apellido:</label>
-    <InputText id="TrabApellido" @bind-Value="NuevoTrabajador.TrabApellido" /><br><br>
-    <label for="TrabDireccion">Dirección:</label>
-    <InputText id="TrabDireccion" @bind-Value="NuevoTrabajador.TrabDireccion" /><br><br>
-    <label for="TrabPuesto">Puesto:</label>
-    <InputText id="TrabPuesto" @bind-Value="NuevoTrabajador.TrabPuesto" /><br><br>
-    <label for="TrabHorario">Horario:</label>
-    <InputText id="TrabHorario" @bind-Value="NuevoTrabajador.TrabHorario" /><br><br>
-    <label for="TrabCorreo">Correo:</label>
-    <InputText id="TrabCorreo" @bind-Value="NuevoTrabajador.TrabCorreo" /><br><br>
-    <label for="TrabSexo">Sexo:</label>
-    <InputText id="TrabSexo" @bind-Value="NuevoTrabajador.TrabSexo" /><br><br>
-    <label for="TrabTel">Teléfono:</label>
-    <InputText id="TrabTel" @bind-Value="NuevoTrabajador.TrabTel" /><br><br>
-        <br />
-        <div class="flex justify-end">
-            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline @(@estaEnviando ? "bg-gray-500" : "")" disabled="@estaEnviando">Submit</button>
-        </div>
-   
+﻿<div class="bg-gray-200 max-w-xs">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <EditForm Model="NuevoTrabajador" OnValidSubmit="@CrearTrabajador">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
 
-</EditForm>
+            <InputEstandar TextoMostrado="Nombre" ReciboValor="@NuevoTrabajador.TrabNombre" /><br><br>
+            <InputEstandar TextoMostrado="Apellido" ReciboValor="@NuevoTrabajador.TrabApellido" /><br><br>
+            <InputEstandar TextoMostrado="Dirección" ReciboValor="@NuevoTrabajador.TrabDireccion" /><br><br>
+            <InputEstandar TextoMostrado="Puesto" ReciboValor="@NuevoTrabajador.TrabPuesto" /><br><br>
+            <InputEstandar TextoMostrado="Correo" ReciboValor="@NuevoTrabajador.TrabCorreo" /><br><br>
+            <InputEstandar TextoMostrado="Teléfono" ReciboValor="@NuevoTrabajador.TrabTel" TipoInput="number"/><br><br>
+            <div class="flex p-2">
+                <label for="sexo">Genero:</label>
+                <select id="sexo" @bind="@NuevoTrabajador.TrabSexo">
+                    <option value="">Seleccione un genero</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                    <option value="O">Otro</option>
+                </select>
+            </div>
+            <div class="flex p-2">
+                <label for="horario">Horario:</label>
+                <select id="horario" @bind="@NuevoTrabajador.TrabHorario">
+                    <option value="">Seleccione un horario</option>
+                    <option value="M">Mañana</option>
+                    <option value="T">Tarde</option>
+                    <option value="N">Noche</option>
+                </select>
+            </div>
+
+            <br />
+            <div class="flex justify-end">
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline @(estaEnviando ? "bg-gray-500" : "")" disabled="@estaEnviando">Submit</button>
+            </div>
+        </EditForm>
+    </div>
+</div>

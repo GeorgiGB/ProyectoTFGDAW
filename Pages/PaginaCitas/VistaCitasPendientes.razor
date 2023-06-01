@@ -1,0 +1,8 @@
+﻿@page "/api/citas/pendientes"
+
+@foreach (var cita in citas)
+{
+    <p>@cita.Paciente.PacNombre--@cita.Fecha</p>
+    <button @onclick="() => AprobarCita(cita)">Aprobar</button>
+    <button @onclick="() => DenegarCita(cita)">Denegar</button>
+}

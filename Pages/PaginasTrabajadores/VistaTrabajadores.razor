@@ -9,9 +9,9 @@
 <div class="flex">
     <!-- Sidebar -->
     <div class="w-1/7 bg-gray-700">
-        
-            <BarraLateral></BarraLateral>
-        
+
+        <BarraLateral></BarraLateral>
+
     </div>
 
     <!-- Contenido principal -->
@@ -28,29 +28,32 @@
                     @foreach (var trabajador in TrabajadoresMostrados)
                     {
                         <div class="w-1/4 p-4">
-							@**@<SfCard>
-                                
-								<img src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
-									 alt="Avatar"
-									 class="mb-4 h-auto rounded-full align-middle"
-									 style="max-width: 50px;" />
-                                <CardHeader Title="@($"{trabajador.TrabNombre} {trabajador.TrabApellido}")">
-                                   
+                            <SfCard>
+                                <div class="pl-6 pt-6">
+                                    <img src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+                                         alt="Avatar"
+                                         class="mb-2 h-auto rounded-full align-middle"
+                                         style="max-width: 100px;" />
+                                </div>
+                                <CardHeader Title="@($"{trabajador.TrabNombre}")" SubTitle="@($"{trabajador.TrabApellido}")">
+
                                     <div class="pb-2 flex justify-end">
-                                        <button @onclick="(()=>VerDetalle((int)trabajador.IdTrab))">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                                                <path fill-rule="evenodd" d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" clip-rule="evenodd" />
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-300" @onclick="(()=>VerDetalle((int)trabajador.IdTrab))">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008z" />
                                             </svg>
                                         </button>
+
                                     </div>
                                 </CardHeader>
                                 <CardContent>
                                     <hr class="border-black" />
-									<p>Puesto de trabajo @(trabajador.TrabPuesto ?? "Puesto no disponible/no definido")</p>
+                                    <p>Puesto de trabajo @(trabajador.TrabPuesto ?? "Puesto no disponible/no definido")</p>
                                 </CardContent>
                                 <CardFooterContent>
                                     <div class="pb-2 pr-4 flex justify-end">
-                                        <button @onclick="() => Informacion()">
+                                        <button @onclick="()=>BorrarTrabajador(trabajador)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-300">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                                 <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
                                             </svg>

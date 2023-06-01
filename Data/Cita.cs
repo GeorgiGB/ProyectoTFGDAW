@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProyectoTFG.Data;
 
-public partial class Cita
+public class Cita
 {
     public int IdCita { get; set; }
 
@@ -12,6 +12,10 @@ public partial class Cita
     public int TrabajadorId { get; set; }
 
     public DateTime Fecha { get; set; }
+    public int Duracion { get; internal set; }
+    public string Estado { get; set; }
 
-    public int Duracion { get; set; }
+    // Propiedades de navegación
+    public Pacientes Paciente { get; set; }
+    public Trabajadores Trabajador { get; set; }
 }

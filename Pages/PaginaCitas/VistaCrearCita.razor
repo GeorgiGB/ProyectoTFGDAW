@@ -1,0 +1,14 @@
+﻿@page "/api/crearcita"
+
+
+<BarraSuperior></BarraSuperior>
+
+<EditForm Model="@cita" OnValidSubmit="@OnSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="nombre" @bind-Value="cita.Paciente.PacNombre" placeholder="Nombre del cliente" />
+    <InputDate id="fecha" @bind-Value="cita.Fecha" placeholder="Fecha de la cita" />
+
+    <button type="submit">Solicitar cita</button>
+</EditForm>

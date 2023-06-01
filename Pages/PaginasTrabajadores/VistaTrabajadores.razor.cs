@@ -15,6 +15,9 @@ namespace ProyectoTFG.Pages.PaginasTrabajadores
 
         [Inject] public ToastService toastService { get; set; }
 
+        [Inject] public TrabajadorService TrabajadorService { get; set; }
+
+
         protected override async Task OnInitializedAsync()
         {
             await ShowDatos();
@@ -25,13 +28,14 @@ namespace ProyectoTFG.Pages.PaginasTrabajadores
             SiguientePagina.NavigateTo($"/api/trabajadores/{id}");
         }
 
-        public void Informacion()
+        // Método para borrar el trabajador
+        private async void BorrarTrabajador(Trabajadores trabajador)
         {
-            toastService.ShowToast(new ToastOption()
+            if (trabajador?.IdTrab != null)
             {
-                Title = "Borrando usuario",
-                Content = "Usuario borrado",
-            });
+                await TrabajadorService.DeleteTrabajador(trabajador.IdTrab);
+                StateHasChanged();
+            }
         }
 
         public async Task ShowDatos()
