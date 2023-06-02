@@ -11,28 +11,42 @@ namespace ProyectoTFG.Componentes.Formularios
         [Inject] public HospitalContext context { get; set; }
 
         [Inject] public ToastService toastService { get; set; }
+
         [Inject] public NavigationManager navigationManager { get; set; }
 
-        public bool estaEnviando = false;
+        public bool isEditing = false;
 
         [Required(ErrorMessage = "Falta un mensaje")]
         public string ErrorMessage { get; set; }
+
+        private List<string> PuestosTrabajo = new List<string>
+        {
+            "Médico/a",
+            "Enfermero/a",
+            "T. Laboratorio",
+            "T. Radiología",
+            "Auxiliar de limpieza",
+            "Fisioterapeuta"
+        };
+
+        private List<string> Genero = new List<string>{"F","M","O"};
+        private List<string> Horario = new List<string>{"M","T","N"};
         public async Task CrearTrabajador()
         {
-            estaEnviando = true;
+            isEditing = true;
             try
             {
                 await GuardarNuevoTrabajador();
                 NuevoTrabajador = new();
-               /*ShowToast();*/
-                LimpiarYActualizarFormulario();
-                estaEnviando = false;
+                /*ShowToast();*/
+                isEditing = false;
                 navigationManager.NavigateTo("/api/trabajadores");
             }
-            catch(Exception ex)
-                {
+            catch (Exception ex)
+            {
                 ErrorMessage = ex.Message;
-                estaEnviando = false;
+                isEditing = false;
+                LimpiarYActualizarFormulario();
                 StateHasChanged();
             }
             StateHasChanged();
@@ -47,11 +61,11 @@ namespace ProyectoTFG.Componentes.Formularios
 
         public void LimpiarYActualizarFormulario()
         {
-            NuevoTrabajador.TrabNombre = string.Empty;
+            NuevoTrabajador.TrabNombre = "";
             NuevoTrabajador.TrabApellido = string.Empty;
             NuevoTrabajador.TrabDireccion = string.Empty;
             NuevoTrabajador.TrabPuesto = string.Empty;
-            NuevoTrabajador.TrabHorario= string.Empty;
+            NuevoTrabajador.TrabHorario = string.Empty;
             NuevoTrabajador.TrabCorreo = string.Empty;
             NuevoTrabajador.TrabSexo = string.Empty;
             NuevoTrabajador.TrabTel = string.Empty;

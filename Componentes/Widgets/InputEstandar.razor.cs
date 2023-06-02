@@ -6,7 +6,21 @@ namespace ProyectoTFG.Componentes.Widgets
     {
         [Parameter] public string TextoMostrado { get; set; } = string.Empty;
 
-        [Parameter] public string ReciboValor { get; set; }
+        private string _reciboValor;
+
+        [Parameter] public string ReciboValor
+        {
+            get => _reciboValor;
+            set
+            {
+                if (_reciboValor != value)
+                {
+                    _reciboValor = value;
+                    ReciboValorChanged.InvokeAsync(value);
+                }
+            }
+        }
+        [Parameter] public EventCallback<string> ReciboValorChanged { get; set; }
 
         [Parameter] public string? TipoInput { get; set; } = "text";
 

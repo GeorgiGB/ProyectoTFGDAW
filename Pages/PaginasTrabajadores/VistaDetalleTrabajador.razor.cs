@@ -22,6 +22,19 @@ namespace ProyectoTFG.Pages.PaginasTrabajadores
 
         private string InputClass => "peer h-full w-full rounded-[7px] border border-blue-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-cyan-200 placeholder-shown:border-t-cyan-200 focus:border-2 focus:border-purple-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-gray-50";
 
+        private List<string> PuestosTrabajo = new List<string>
+        {
+            "Médico/a",
+            "Enfermero/a",
+            "T. Laboratorio",
+            "T. Radiología",
+            "Auxiliar de limpieza",
+            "Fisioterapeuta"
+        };
+
+        private List<string> Genero = new List<string> { "F", "M", "O" };
+        private List<string> Horario = new List<string> { "M", "T", "N" };
+
         protected override async Task OnParametersSetAsync()
         {
             // Obtener los detalles del trabajador del ID proporcionado
@@ -32,9 +45,9 @@ namespace ProyectoTFG.Pages.PaginasTrabajadores
         {
 
             await TrabajadorService.SaveTrabajador(trabajadorSeleccionado);
-            Navigation.NavigateTo("/api/trabajadores");
+            
             StateHasChanged();
-
+            NavigateBack();
             /*ToastService.ShowToast(new ToastOption
             {
                 Title = "Exito",
