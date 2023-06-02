@@ -13,11 +13,14 @@
     <div class="w-1/7 bg-gray-700">
         <BarraLateral></BarraLateral>
     </div>
-    <div class="w-3/4">
+    <div class="w-full">
         <div class="col-lg-12 control-section">
             <div class="content-wrapper">
-                <div class="row">
-                    <BarraBusqueda Busqueda="Filtrar Trabajador"></BarraBusqueda>
+                <div>
+                    <div class="w-full text-white px-4 py-4 flex-col ">
+                    <BarraBusqueda Placeholder="Buscar Paciente" RutaPredefinida="@RutasDefinidas.CrearPaciente"></BarraBusqueda>
+                    </div>
+
                     <SfGrid DataSource="@PacientesMostrados" AllowPaging="true">
                         <GridColumns>
                             <GridColumn Field=@nameof(Pacientes.IdPac) HeaderText="ID"></GridColumn>

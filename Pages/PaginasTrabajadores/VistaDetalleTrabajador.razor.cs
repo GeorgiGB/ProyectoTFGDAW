@@ -47,12 +47,13 @@ namespace ProyectoTFG.Pages.PaginasTrabajadores
             await TrabajadorService.SaveTrabajador(trabajadorSeleccionado);
             
             StateHasChanged();
-            NavigateBack();
-            /*ToastService.ShowToast(new ToastOption
+            
+            ToastService.ShowToast(new ToastOption
             {
                 Title = "Exito",
                 Content = "El trabajador se ha actualizado correctamente"
-            });*/
+            });
+            NavigateBack();
         }
 
         private void NavigateBack()

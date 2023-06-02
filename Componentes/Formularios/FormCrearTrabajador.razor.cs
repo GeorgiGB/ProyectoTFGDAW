@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProyectoTFG.Data;
 using ProyectoTFG.Data.Toast;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +13,7 @@ namespace ProyectoTFG.Componentes.Formularios
 
         [Inject] public ToastService toastService { get; set; }
 
-        [Inject] public NavigationManager navigationManager { get; set; }
+        [Inject] public NavigationManager Navigation { get; set; }
 
         public bool isEditing = false;
 
@@ -40,7 +41,7 @@ namespace ProyectoTFG.Componentes.Formularios
                 NuevoTrabajador = new();
                 /*ShowToast();*/
                 isEditing = false;
-                navigationManager.NavigateTo("/api/trabajadores");
+                Navigation.NavigateTo("/api/trabajadores");
             }
             catch (Exception ex)
             {
@@ -81,6 +82,11 @@ namespace ProyectoTFG.Componentes.Formularios
             // Show the toast
             this.toastService.ShowToast(new ToastOption() { Title = "Exito!", Content = "Se ha guardado el usuario" });
             StateHasChanged();
+        }
+
+        private void NavigateBack()
+        {
+            Navigation.NavigateTo("/api/trabajadores");
         }
     }
 }
