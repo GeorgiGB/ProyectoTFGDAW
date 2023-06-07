@@ -21,9 +21,9 @@ namespace ProyectoTFG.Data
 
         public async Task<bool> DeletePacientes(int id)
         {
-            var paciente = await _context.Usuarios.FindAsync(id);
+            var paciente = await _context.Pacientes.FindAsync(id);
 
-            _context.Usuarios.Remove(paciente);
+            _context.Pacientes.Remove(paciente);
 
             return await _context.SaveChangesAsync() > 0;
         }
@@ -45,12 +45,15 @@ namespace ProyectoTFG.Data
         }
         public async Task<bool> SavePacientes(Pacientes paciente)
         {
-            if (paciente.IdPac > 0)
+            if (paciente.idPac > 0)
                 return await UpdatePacientes(paciente);
             else
                 return await AgregarPacientes(paciente);
         }
 
-        
+        public async Task<IEnumerable<Pacientes>> BuscarPacientesPorNombre(string nombre)
+        {
+            return await _context.Pacientes.Where(t => t.PacNombre.EndsWith(nombre) || t.PacApellido.EndsWith(nombre)).ToListAsync();
+        }
     }
 }

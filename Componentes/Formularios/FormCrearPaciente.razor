@@ -1,31 +1,62 @@
 ﻿<!--PAGINA PARA HACER EL FORMULARIO DEL PACIENTE-->
+<div class="flex justify-center pt-5 pb-5">
+	<div class="flex justify-center pt-5 pb-5">
+		<div class="pr-2">
+			<button @onclick="NavigateBack" class="bg-blue-400 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+				</svg>
+			</button>
+		</div>
+		<div class="p-8 shadow-lg w-full max-w-5xl rounded-lg relative">
+			<EditForm Model="@NuevoPaciente" OnValidSubmit="@EnviarDatosNuevoPac">
+				<div class="flex flex-wrap m-xl-3 mb-6">
+					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+						<label for="TrabNombre">Nombre:</label>
+						<InputText id="TrabNombre" @bind-Value="NuevoPaciente.PacNombre" class="w-full px-3 py-2 border rounded-md" />
+					</div>
+					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+						<label for="TrabApellido">Apellido:</label>
+						<InputText id="TrabApellido" @bind-Value="NuevoPaciente.PacApellido" class="w-full px-3 py-2 border rounded-md" />
+					</div>
+					<div class="w-full px-3 mb-6">
+						<label for="TrabDireccion">Dirección:</label>
+						<InputText id="TrabDireccion" @bind-Value="NuevoPaciente.PacDireccion" class="w-full px-3 py-2 border rounded-md" />
+					</div>
+					<div class="flex p-2">
+						<label for="sexo">Genero</label>
+						<select id="sexo" @bind="@NuevoPaciente.PacSexo">
+							<option value="">Seleccione un genero</option>
+							@foreach (var g in Genero)
+							{
+								<option value="@g">@g</option>
+							}
+						</select>
+					</div>
+					<div class="flex p-2">
+						<label for="sexo">Grupo Sanguineo</label>
+						<select id="sexo" @bind="@NuevoPaciente.PacGs">
+							<option value="">Seleccione GS</option>
+							@foreach (var h in gruposSanguineos)
+							{
+								<option value="@h">@h</option>
+							}
+						</select>
 
-<div class="w-full max-w-xs">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                Username
-            </label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
-        </div>
-        <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                Password
-            </label>
-            <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="*********">
-            <p class="text-red-500 text-xs italic">Please choose a password.</p>
-            
-        </div>
-        <div class="flex items-center justify-between">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                Sign In
-            </button>
-            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-                Forgot Password?
-            </a>
-        </div>
-    </form>
-    <p class="text-center text-gray-500 text-xs">
-        &copy;2020 Acme Corp. All rights reserved.
-    </p>
+						<br />
+
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<button type="submit" class="mt-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-400 hover:enabled:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50" disabled="@(!isEditing)">
+						Crear
+					</button>
+				</div>
+
+			</EditForm>
+		</div>
+	</div>
 </div>
+
+<ToastComponent></ToastComponent>

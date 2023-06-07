@@ -32,12 +32,17 @@ namespace ProyectoTFG.Migrations
 
             modelBuilder.Entity("ProyectoTFG.Data.Cita", b =>
                 {
-                    b.Property<int>("IdCita")
+                    b.Property<int>("idCita")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
-                        .HasColumnName("IdCita");
+                        .HasColumnName("idCita");
 
                     b.Property<int>("Duracion")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("DATETIME");
@@ -50,16 +55,22 @@ namespace ProyectoTFG.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("TrabajadorID");
 
-                    b.HasKey("IdCita");
+                    b.HasKey("idCita")
+                        .HasName("PrimaryKey_idCita");
+
+                    b.HasIndex("PacienteId");
+
+                    b.HasIndex("TrabajadorId");
 
                     b.ToTable("Citas");
                 });
 
             modelBuilder.Entity("ProyectoTFG.Data.Pacientes", b =>
                 {
-                    b.Property<int>("IdPac")
+                    b.Property<int>("idPac")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
-                        .HasColumnName("IdPac");
+                        .HasColumnName("idPac");
 
                     b.Property<string>("PacApellido")
                         .IsRequired()
@@ -67,6 +78,7 @@ namespace ProyectoTFG.Migrations
                         .HasColumnName("pacApellido");
 
                     b.Property<string>("PacDireccion")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(100)")
                         .HasColumnName("pacDireccion");
 
@@ -75,6 +87,7 @@ namespace ProyectoTFG.Migrations
                         .HasColumnName("pacFechRegistro");
 
                     b.Property<string>("PacGs")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(50)")
                         .HasColumnName("pacGS");
 
@@ -84,20 +97,22 @@ namespace ProyectoTFG.Migrations
                         .HasColumnName("pacNombre");
 
                     b.Property<string>("PacSexo")
+                        .IsRequired()
                         .HasColumnType("CHAR(1)")
                         .HasColumnName("pacSexo");
 
-                    b.HasKey("IdPac");
+                    b.HasKey("idPac")
+                        .HasName("PrimaryKey_idPac");
 
                     b.ToTable("Pacientes");
                 });
 
             modelBuilder.Entity("ProyectoTFG.Data.Trabajadores", b =>
                 {
-                    b.Property<int>("IdTrab")
+                    b.Property<int>("idTrab")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
-                        .HasColumnName("idtrab");
+                        .HasColumnName("idTrab");
 
                     b.Property<string>("TrabApellido")
                         .IsRequired()
@@ -105,10 +120,12 @@ namespace ProyectoTFG.Migrations
                         .HasColumnName("trabApellido");
 
                     b.Property<string>("TrabCorreo")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(50)")
                         .HasColumnName("trabCorreo");
 
                     b.Property<string>("TrabDireccion")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(100)")
                         .HasColumnName("trabDireccion");
 
@@ -117,6 +134,7 @@ namespace ProyectoTFG.Migrations
                         .HasColumnName("trabFechaContrato");
 
                     b.Property<string>("TrabHorario")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(50)")
                         .HasColumnName("trabHorario");
 
@@ -126,28 +144,32 @@ namespace ProyectoTFG.Migrations
                         .HasColumnName("trabNombre");
 
                     b.Property<string>("TrabPuesto")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(50)")
                         .HasColumnName("trabPuesto");
 
                     b.Property<string>("TrabSexo")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(50)")
                         .HasColumnName("trabSexo");
 
                     b.Property<string>("TrabTel")
+                        .IsRequired()
                         .HasColumnType("VARCHAR(15)")
                         .HasColumnName("trabTel");
 
-                    b.HasKey("IdTrab")
-                        .HasName("PrimaryKey_idtrab");
+                    b.HasKey("idTrab")
+                        .HasName("PrimaryKey_idTrab");
 
                     b.ToTable("Trabajadores");
                 });
 
             modelBuilder.Entity("ProyectoTFG.Data.Usuario", b =>
                 {
-                    b.Property<int>("IdUsu")
+                    b.Property<int>("idUsu")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
-                        .HasColumnName("IdUsu");
+                        .HasColumnName("idUsu");
 
                     b.Property<string>("UsuNombre")
                         .IsRequired()
@@ -168,9 +190,28 @@ namespace ProyectoTFG.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("usuTrabId");
 
-                    b.HasKey("IdUsu");
+                    b.HasKey("idUsu");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("ProyectoTFG.Data.Cita", b =>
+                {
+                    b.HasOne("ProyectoTFG.Data.Pacientes", "Paciente")
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProyectoTFG.Data.Trabajadores", "Trabajador")
+                        .WithMany()
+                        .HasForeignKey("TrabajadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Paciente");
+
+                    b.Navigation("Trabajador");
                 });
 #pragma warning restore 612, 618
         }

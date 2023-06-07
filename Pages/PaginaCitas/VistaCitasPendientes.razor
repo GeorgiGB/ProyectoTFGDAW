@@ -1,8 +1,38 @@
-﻿@page "/api/citas/pendientes"
+﻿@page "/api/citaspendientes"
+<!--PAGINA DONDE SE VERAN LAS CITAS QUE SE TIENEN QUE APROBAR-->
+<BarraSuperior></BarraSuperior>
 
-@foreach (var cita in citas)
+<BarraLateral></BarraLateral>
+<h2>Citas Pendientes</h2>
+
+@if (citasPendientes.Any())
 {
-    <p>@cita.Paciente.PacNombre--@cita.Fecha</p>
-    <button @onclick="() => AprobarCita(cita)">Aprobar</button>
-    <button @onclick="() => DenegarCita(cita)">Denegar</button>
+    @foreach (var cita in citasPendientes)
+    {
+        <div>
+            <!-- Aquí puedes mostrar la información que desees sobre la cita -->
+            <p>{cita.Fecha}: Cita con el ID {cita.IdCita}</p>
+            <button @onclick="() => AprobarCita(cita)">Aprobar</button>
+            <button @onclick="() => DenegarCita(cita)">Denegar</button>
+        </div>
+    }
+}
+else
+{
+    <p>No hay citas pendientes.</p>
+}
+
+<h2>Citas Aprobadas</h2>
+
+@if (citasAprobadas.Any())
+{
+    <p>{cita.Fecha}: Cita con el ID {cita.IdCita}</p>
+}
+else
+{
+    <p>No hay citas aprobadas.</p>
+}
+
+@code {
+    // Código de la clase
 }

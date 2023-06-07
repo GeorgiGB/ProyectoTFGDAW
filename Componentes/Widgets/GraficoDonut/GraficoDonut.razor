@@ -1,0 +1,12 @@
+﻿@typeparam TItem
+
+<SfAccumulationChart Title="Distribución de Turnos" EnableBorderOnMouseMove="false" SelectionMode="AccumulationSelectionMode.Point">
+    <AccumulationChartTooltipSettings Enable="true"></AccumulationChartTooltipSettings>
+    <AccumulationChartSeriesCollection>
+        <AccumulationChartSeries DataSource="@DatosMostrarAsObject" XName="@XName" YName="@YName" Name="@NombreTitulo">
+            <AccumulationDataLabelSettings Visible="true">
+                <AccumulationChartDataLabelFont Color="white"></AccumulationChartDataLabelFont>
+            </AccumulationDataLabelSettings>
+        </AccumulationChartSeries>
+    </AccumulationChartSeriesCollection>
+</SfAccumulationChart>

@@ -1,4 +1,4 @@
-﻿namespace ProyectoTFG.Data.Toast
+﻿namespace ProyectoTFG.Componentes.Widgets.Toast
 {
     public class ToastOption
     {

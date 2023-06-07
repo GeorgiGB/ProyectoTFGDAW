@@ -50,7 +50,7 @@ namespace ProyectoTFG.Data
          */
         public async Task<bool> SaveUsuario(Usuario usuario)
         {
-            if (usuario.IdUsu > 0 )
+            if (usuario.idUsu > 0)
                 return await UpdateUsuario(usuario);
             else
                 return await AgregarUsuario(usuario);

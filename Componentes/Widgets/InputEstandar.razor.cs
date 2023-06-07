@@ -8,7 +8,8 @@ namespace ProyectoTFG.Componentes.Widgets
 
         private string _reciboValor;
 
-        [Parameter] public string ReciboValor
+        [Parameter]
+        public string ReciboValor
         {
             get => _reciboValor;
             set

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ProyectoTFG.Data;
+﻿namespace ProyectoTFG.Data;
 
 public partial class Atendido
 {

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
-using ProyectoTFG.Componentes.Widgets;
+using ProyectoTFG.Componentes.Widgets.Toast;
 using ProyectoTFG.Data;
-using ProyectoTFG.Data.Toast;
 
 namespace ProyectoTFG.Componentes.Formularios
 {
@@ -19,23 +17,23 @@ namespace ProyectoTFG.Componentes.Formularios
 
             Toast.ShowToast(new ToastOption() { Title = "Exito!", Content = "Se ha enviado la notificacion" });
         }
-/*
-        private DatosDataContext? _context;
-        protected override async Task OnInitializedAsync()
-        {
-            await ShowDatos();
-        }
+        /*
+                private DatosDataContext? _context;
+                protected override async Task OnInitializedAsync()
+                {
+                    await ShowDatos();
+                }
 
-        public async Task ShowDatos()
-        {
-            _context ??= await DatosDataContextFatory.CreateDbContextAsync();
+                public async Task ShowDatos()
+                {
+                    _context ??= await DatosDataContextFatory.CreateDbContextAsync();
 
-            if (_context is not null)
-            {
-                DatosMostrados = await _context.Datos.ToListAsync();
-            }
+                    if (_context is not null)
+                    {
+                        DatosMostrados = await _context.Datos.ToListAsync();
+                    }
 
-            //if (true) await _context.DisposeAsync();
-        }*/
+                    //if (true) await _context.DisposeAsync();
+                }*/
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
+using ProyectoTFG.Componentes.Widgets.Toast;
 using ProyectoTFG.Data;
-using ProyectoTFG.Data.Toast;
 
 namespace ProyectoTFG.Pages.PaginasTrabajadores
 {
@@ -10,9 +10,9 @@ namespace ProyectoTFG.Pages.PaginasTrabajadores
 
         [Inject] public HospitalContext context { get; set; }
 
-        [Inject] public TrabajadorService TrabajadorService { get; set; }
+        [Inject] public TrabajadorService trabajadorService { get; set; }
 
-        [Inject] public ToastService ToastService { get; set; }
+        [Inject] public ToastService toastService { get; set; }
 
         [Inject] public NavigationManager Navigation { get; set; }
 
@@ -44,16 +44,19 @@ namespace ProyectoTFG.Pages.PaginasTrabajadores
         private async void HandleValidSubmit()
         {
 
-            await TrabajadorService.SaveTrabajador(trabajadorSeleccionado);
+            await trabajadorService.UpdateTrabajador(trabajadorSeleccionado);
+
+            ShowNotification();
             
+            isEditing = false;
+
+            //NavigateBack();
+        }
+
+        private void ShowNotification()
+        {
+            this.toastService.ShowToast(new ToastOption() { Title="Exito",Content="Trabajador actualizado correctamente"});
             StateHasChanged();
-            
-            ToastService.ShowToast(new ToastOption
-            {
-                Title = "Exito",
-                Content = "El trabajador se ha actualizado correctamente"
-            });
-            NavigateBack();
         }
 
         private void NavigateBack()

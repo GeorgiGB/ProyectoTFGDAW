@@ -1,10 +1,12 @@
 ﻿@inherits LayoutComponentBase
 
-
+@if(mostrarCargando)
+{
+    <CargandoPagina></CargandoPagina>
+}
 <section class="mb-30 pb-30">
     @Body
 </section>
 <div>
     <BarraInferior></BarraInferior>
 </div>
-

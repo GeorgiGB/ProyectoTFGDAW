@@ -1,24 +1,24 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ProyectoTFG.Componentes.Widgets.Toast;
 using ProyectoTFG.Data;
-using ProyectoTFG.Data.Toast;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoTFG.Componentes.Formularios
 {
-    public partial class FormCrearTrabajador
+    public partial class FormCrearTrabajador : ComponentBase
     {
         private Trabajadores NuevoTrabajador = new();
-        [Inject] public HospitalContext context { get; set; }
 
         [Inject] public ToastService toastService { get; set; }
 
         [Inject] public NavigationManager Navigation { get; set; }
 
-        public bool isEditing = false;
+        [Inject] public TrabajadorService trabajadorService { get; private set; }
 
         [Required(ErrorMessage = "Falta un mensaje")]
         public string ErrorMessage { get; set; }
+
+        private bool isEditing = true;
 
         private List<string> PuestosTrabajo = new List<string>
         {
@@ -30,35 +30,34 @@ namespace ProyectoTFG.Componentes.Formularios
             "Fisioterapeuta"
         };
 
-        private List<string> Genero = new List<string>{"F","M","O"};
-        private List<string> Horario = new List<string>{"M","T","N"};
-        public async Task CrearTrabajador()
+        private readonly List<string> Genero = new (){ "F", "M", "O" };
+        private readonly List<string> Horario = new() { "M", "T", "N" };
+        public async Task EnviarDatosNuevoTrab()
         {
-            isEditing = true;
+            isEditing = false;
             try
             {
                 await GuardarNuevoTrabajador();
                 NuevoTrabajador = new();
-                /*ShowToast();*/
-                isEditing = false;
-                Navigation.NavigateTo("/api/trabajadores");
+                
+                LimpiarYActualizarFormulario();
+				Notificacion("Exito", "Trabajador Creado");
+				isEditing = true;
             }
             catch (Exception ex)
             {
+                Notificacion("Algo ha fallado", ex.ToString());
                 ErrorMessage = ex.Message;
-                isEditing = false;
-                LimpiarYActualizarFormulario();
                 StateHasChanged();
             }
-            StateHasChanged();
         }
 
         async Task GuardarNuevoTrabajador()
         {
             NuevoTrabajador.TrabFechaContrato = DateTime.Now;
-            context?.Trabajadores.Add(NuevoTrabajador);
-            context?.SaveChanges();
-        }
+            await trabajadorService.AgregarTrabajador(NuevoTrabajador);
+			StateHasChanged();
+		}
 
         public void LimpiarYActualizarFormulario()
         {
@@ -77,16 +76,15 @@ namespace ProyectoTFG.Componentes.Formularios
         /*
          * Notificacion flotante que constara de un titulo y un cuerpo
         */
-        private void ShowToast()
+        private void Notificacion(string Titulo, string Contenido)
         {
             // Show the toast
-            this.toastService.ShowToast(new ToastOption() { Title = "Exito!", Content = "Se ha guardado el usuario" });
-            StateHasChanged();
+            this.toastService.ShowToast(new ToastOption() { Title = Titulo, Content = Contenido });
         }
 
         private void NavigateBack()
         {
-            Navigation.NavigateTo("/api/trabajadores");
+            Navigation.NavigateTo(RutasDefinidas.VistaTrabajadores);
         }
     }
 }

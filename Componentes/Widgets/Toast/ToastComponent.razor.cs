@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
-using ProyectoTFG.Data.Toast;
+using ProyectoTFG.Componentes.Widgets.Toast;
 using Syncfusion.Blazor.Notifications;
 
-namespace ProyectoTFG.Componentes.Widgets
+namespace ProyectoTFG.Componentes.Widgets.Toast
 {
     public partial class ToastComponent
     {
@@ -16,15 +16,15 @@ namespace ProyectoTFG.Componentes.Widgets
 
         protected override async void OnInitialized()
         {
-            ToastService.ShowToastTrigger += (ToastOption options) =>
+            ToastService.ShowToastTrigger += (options) =>
             {
                 InvokeAsync(() =>
                 {
                     this.Options.Title = options.Title;
-                    this.Options.Content = options.Content;
-                    this.IsToastVisible = true;
-                    this.StateHasChanged();
-                    Toast.ShowAsync();
+					this.Options.Content = options.Content;
+					this.IsToastVisible = true;
+					this.StateHasChanged();
+					this.Toast.ShowAsync();
                 });
             };
             base.OnInitialized();

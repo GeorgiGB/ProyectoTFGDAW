@@ -1,0 +1,81 @@
+﻿@page "/api/pacientes/{IdPac}"
+
+<PageTitle>Vista de Pacientes</PageTitle>
+
+<BarraSuperior></BarraSuperior>
+
+@if (pacienteSeleccionado != null)
+{
+	<!--PAGINA PARA HACER EL FORMULARIO DEL PACIENTE-->
+	<div class="flex justify-center pt-5 pb-5">
+		<div class="flex justify-center pt-5 pb-5">
+			<div class="pr-2">
+				<button @onclick="NavigateBack" class="bg-blue-400 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+					</svg>
+				</button>
+			</div>
+				<div class="mb-5 text-start">
+                <h2 class="font-bold text-2xl text-center">Vista avanzada</h2>
+                <br>
+                <div class="flex justify-end">
+                <label class="flex items-center cursor-pointer">
+                    <input type="checkbox" class="form-checkbox" @bind="isEditing" />
+                    <span class="ml-2 text-sm font-bold">Editar</span>
+                </label>
+                </div>
+                <br>
+			<div class="p-8 shadow-lg w-full max-w-5xl rounded-lg relative">
+				<EditForm Model="@pacienteSeleccionado" OnValidSubmit="@HandleValidSubmit">
+					<div class="flex flex-wrap m-xl-3 mb-6">
+						<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+							<label for="TrabNombre">Nombre:</label>
+							<InputText id="TrabNombre" @bind-Value="pacienteSeleccionado.PacNombre" class="w-full px-3 py-2 border rounded-md" />
+						</div>
+						<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+							<label for="TrabApellido">Apellido:</label>
+							<InputText id="TrabApellido" @bind-Value="pacienteSeleccionado.PacApellido" class="w-full px-3 py-2 border rounded-md" />
+						</div>
+						<div class="w-full px-3 mb-6">
+							<label for="TrabDireccion">Dirección:</label>
+							<InputText id="TrabDireccion" @bind-Value="pacienteSeleccionado.PacDireccion" class="w-full px-3 py-2 border rounded-md" />
+						</div>
+						<div class="flex p-2">
+							<label for="sexo">Genero: </label>
+							<select id="sexo" @bind="@pacienteSeleccionado.PacSexo">
+								<option value="">Seleccione un genero</option>
+								@foreach (var g in Genero)
+								{
+									<option value="@g">@g</option>
+								}
+							</select>
+						</div>
+						<div class="flex p-2">
+							<label for="sexo">Grupo Sanguineo: </label>
+							<select id="sexo" @bind="@pacienteSeleccionado.PacGs">
+								<option value="">Seleccione GS</option>
+								@foreach (var h in gruposSanguineos)
+								{
+									<option value="@h">@h</option>
+								}
+							</select>
+
+							<br />
+
+						</div>
+					</div>
+
+					<div class="mt-4">
+						<button type="submit" class="mt-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-400 hover:enabled:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50" disabled="@(!isEditing)">
+							Crear
+						</button>
+					</div>
+
+				</EditForm>
+			</div>
+		</div>
+	</div>
+	</div>
+}
+<ToastComponent></ToastComponent>

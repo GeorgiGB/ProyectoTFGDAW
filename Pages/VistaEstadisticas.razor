@@ -1,0 +1,34 @@
+﻿@page "/api/estadisticas"
+
+<PageTitle>Estadisticas</PageTitle>
+
+<div class="flex">
+    <!-- Sidebar -->
+    <div class="w-1/7 bg-gray-700">
+        <BarraLateral></BarraLateral>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="w-full px-4 py-4">
+        <!-- Gráfico de turnos -->
+        <div class="control-section">
+            <div class="w-1/2 pr-4">
+                <div class="border-r border-blue-500">
+                    <GraficoDonut DatosMostrar="@turnoData" XName="Turno" YName="Contador" NombreTitulo="Clasificacion de turnos de trabajadores"></GraficoDonut>
+                </div>
+            </div>
+            <div class="w-1/2 pr-4">
+                <div class="border-r border-blue-500">
+                    <GraficoDonut DatosMostrar="@citaData" XName="Turno" YName="Contador" NombreTitulo="Estado de las citas"></GraficoDonut>
+                </div>
+            </div>
+            <div class="w-1/2 pr-4">
+                <div class="border-r border-blue-500">
+                    <GraficoDonut DatosMostrar="@gsDatas" XName="Turno" YName="Contador" NombreTitulo="Clasificacion Grupos Sanguineos sobre de Pacientes"></GraficoDonut>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    

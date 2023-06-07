@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProyectoTFG.Data;
 
 public partial class Pacientes
 {
-    public int IdPac { get; set; }
-
+    [Key]
+	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+	public int idPac { get; set; }
+    [Required]
     public string PacNombre { get; set; } = null!;
-
-    public string PacApellido { get; set; } = null!;
-
-    public string? PacDireccion { get; set; }
-
-    public string? PacSexo { get; set; }
-
-    public string? PacGs { get; set; } //Grupo sanguineo
+	[Required]
+	public string PacApellido { get; set; } = null!;
+	[Required]
+	public string? PacDireccion { get; set; }
+	[Required]
+	public string? PacSexo { get; set; }
+	[Required]
+	public string? PacGs { get; set; } //Grupo sanguineo
 
     public DateTime PacFechRegistro { get; set; }
 }

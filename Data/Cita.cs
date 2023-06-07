@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoTFG.Data;
 
 public class Cita
 {
-    public int IdCita { get; set; }
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int idCita { get; set; }
 
     public int PacienteId { get; set; }
 
@@ -18,4 +20,11 @@ public class Cita
     // Propiedades de navegación
     public Pacientes Paciente { get; set; }
     public Trabajadores Trabajador { get; set; }
+
+    public enum EstadoCita
+    {
+        Pendiente,
+        Aprobada,
+        Denegada
+    }
 }

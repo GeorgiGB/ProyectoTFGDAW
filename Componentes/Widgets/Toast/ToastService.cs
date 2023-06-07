@@ -1,4 +1,4 @@
-﻿namespace ProyectoTFG.Data.Toast
+﻿namespace ProyectoTFG.Componentes.Widgets.Toast
 {
     public class ToastService
     {
@@ -6,7 +6,7 @@
         public void ShowToast(ToastOption options)
         {
             //Invoke ToastComponent to update and show the toast with messages  
-            ShowToastTrigger.Invoke(options);
+            this.ShowToastTrigger?.Invoke(options);
         }
     }
 }

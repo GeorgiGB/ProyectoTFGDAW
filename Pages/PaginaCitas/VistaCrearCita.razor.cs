@@ -5,11 +5,11 @@ namespace ProyectoTFG.Pages.PaginaCitas
 {
     public partial class VistaCrearCita
     {
-        private Cita cita = new();
+        private Cita nuevaCita = new Cita() { Estado = Cita.EstadoCita.Pendiente.ToString()};
         [Inject] public CitasService citasService { get; set; }
         private async Task OnSubmit()
         {
-            await citasService.AgregarCitas(cita);
+            await citasService.AgregarCitas(nuevaCita);
         }
 
     }

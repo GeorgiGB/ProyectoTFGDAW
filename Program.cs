@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using ProyectoTFG.Componentes.Widgets.Toast;
 using ProyectoTFG.Data;
-using ProyectoTFG.Data.Toast;
 using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +10,11 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
 builder.Services.AddSyncfusionBlazor();
-builder.Services.AddScoped<ToastService>();
 builder.Services.AddScoped<TrabajadorService>();
 builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddScoped<CitasService>();
+builder.Services.AddScoped<PacientesService>();
+builder.Services.AddScoped<ToastService>();
 builder.Services.AddSingleton<ToastService>();
 
 var connectionString = builder.Configuration.GetConnectionString("HospitalDB");

@@ -1,4 +1,5 @@
 ﻿@page "/api/citas"
+<!--Pagina donde se veran las citas reservadas-->
 
 <BarraSuperior></BarraSuperior>
 <div class="flex">
@@ -6,8 +7,28 @@
         <BarraLateral></BarraLateral>
 
     </div>
-    <!--Dos selectores de las listas de pacientes-->
-    <div>
-        <h3>Seleccionar fecha y hora de la cita</h3>
+    <div class="w-full text-white px-4 py-4 flex-col ">
+        <BarraBusqueda Placeholder="Buscar cita" RutaPredefinida="@RutasDefinidas.CrearCitas"></BarraBusqueda>
     </div>
+	<div class="w-full h-full overflow-auto">
+		<div class="p-4">
+			<div class="flex flex-wrap justify-start">
+				@if (CitasMostradas != null)
+				{
+                    <SfGrid DataSource="@CitasMostradas" AllowPaging="true">
+                        <GridColumns>
+                            <GridColumn Field=@nameof(Cita.idCita) HeaderText="ID Cita" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                            <GridColumn Field=@nameof(Cita.Paciente.PacNombre) HeaderText="ID Paciente" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                            <GridColumn Field=@nameof(Cita.Fecha) HeaderText="Fecha" TextAlign="TextAlign.Right" Format="d" Width="120"></GridColumn>
+                            <GridColumn Field=@nameof(Cita.EstadoCita) HeaderText="Estado" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                        </GridColumns>
+                    </SfGrid>
+                }
+                else
+                {
+                    <CargandoPagina></CargandoPagina>
+                }
+            </div>
+		</div>
+	</div>
 </div>

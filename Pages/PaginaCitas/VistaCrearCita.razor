@@ -1,14 +1,14 @@
-﻿@page "/api/crearcita"
+﻿@page "/api/crearcitas"
 
-
+<PageTitle>Solicitar Cita</PageTitle>
 <BarraSuperior></BarraSuperior>
 
-<EditForm Model="@cita" OnValidSubmit="@OnSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-    <InputText id="nombre" @bind-Value="cita.Paciente.PacNombre" placeholder="Nombre del cliente" />
-    <InputDate id="fecha" @bind-Value="cita.Fecha" placeholder="Fecha de la cita" />
-
-    <button type="submit">Solicitar cita</button>
-</EditForm>
+<div class="flex">
+    <div class="w-1/7 bg-gray-700">
+<BarraLateral></BarraLateral>
+</div>
+    <div class="w-full">
+        <FormSolicitarCita></FormSolicitarCita>
+    </div>
+</div>
+<ToastComponent></ToastComponent>

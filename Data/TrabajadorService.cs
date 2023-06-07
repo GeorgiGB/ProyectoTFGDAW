@@ -50,10 +50,15 @@ namespace ProyectoTFG.Data
          */
         public async Task<bool> SaveTrabajador(Trabajadores trabajador)
         {
-            if (trabajador.IdTrab > 0)
+            if (trabajador.idTrab > 0)
                 return await UpdateTrabajador(trabajador);
             else
                 return await AgregarTrabajador(trabajador);
         }
+        public async Task<IEnumerable<Trabajadores>> BuscarTrabajadoresPorNombre(string nombre)
+        {
+            return await _context.Trabajadores.Where(t => t.TrabNombre.EndsWith(nombre) || t.TrabApellido.EndsWith(nombre)).ToListAsync();
+        }
+
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoTFG.Data;
 
@@ -28,7 +26,7 @@ public class HospitalContext : DbContext
             EnableSensitiveDataLogging()
             .UseSqlite("Data Source=Data\\\\\\\\hospital.db");
     }
-        
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -44,30 +42,40 @@ public class HospitalContext : DbContext
 
         modelBuilder.Entity<Cita>(entity =>
         {
-            entity.HasKey(e => e.IdCita);
+            entity.HasKey(e => e.idCita)
+                .HasName("PrimaryKey_idCita");
 
-            entity.Property(e => e.IdCita)
-                .ValueGeneratedNever()
+            entity.Property(e => e.idCita)
+                .ValueGeneratedOnAdd()
                 .HasColumnType("INTEGER")
-                .HasColumnName("IdCita");
+                .HasColumnName("idCita");
+
             entity.Property(e => e.Duracion).HasColumnType("INTEGER");
+
             entity.Property(e => e.Fecha).HasColumnType("DATETIME");
+
             entity.Property(e => e.PacienteId)
                 .HasColumnType("INTEGER")
                 .HasColumnName("PacienteID");
+
             entity.Property(e => e.TrabajadorId)
                 .HasColumnType("INTEGER")
                 .HasColumnName("TrabajadorID");
+
+            entity.Property(e => e.Estado)
+                .HasColumnType("VARCHAR(20)");
         });
+
 
         modelBuilder.Entity<Pacientes>(entity =>
         {
-            entity.HasKey(e => e.IdPac);
+            entity.HasKey(e => e.idPac)
+            .HasName("PrimaryKey_idPac");
 
-            entity.Property(e => e.IdPac)
-                .ValueGeneratedNever()
-                .HasColumnType("INTEGER")
-                .HasColumnName("IdPac");
+			entity.Property(e => e.idPac)
+				.ValueGeneratedOnAdd()
+				.HasColumnType("INTEGER")
+                .HasColumnName("idPac");
             entity.Property(e => e.PacApellido)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("pacApellido");
@@ -90,13 +98,13 @@ public class HospitalContext : DbContext
 
         modelBuilder.Entity<Trabajadores>(entity =>
         {
-            entity.HasKey(e => e.IdTrab)
-                .HasName("PrimaryKey_idtrab");
+            entity.HasKey(e => e.idTrab)
+                .HasName("PrimaryKey_idTrab");
 
-            entity.Property(e => e.IdTrab)
+            entity.Property(e => e.idTrab)
                 .ValueGeneratedOnAdd()
                 .HasColumnType("INTEGER")
-                 .HasColumnName("idtrab");
+                 .HasColumnName("idTrab");
             entity.Property(e => e.TrabApellido)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("trabApellido");
@@ -128,12 +136,12 @@ public class HospitalContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.IdUsu);
+            entity.HasKey(e => e.idUsu);
 
-            entity.Property(e => e.IdUsu)
-                .ValueGeneratedNever()
+            entity.Property(e => e.idUsu)
+                .ValueGeneratedOnAdd()
                 .HasColumnType("INTEGER")
-                .HasColumnName("IdUsu");
+                .HasColumnName("idUsu");
             entity.Property(e => e.UsuNombre)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("usuNombre");
@@ -148,45 +156,5 @@ public class HospitalContext : DbContext
                 .HasColumnName("usuTrabId");
         });
 
-        /*modelBuilder.Entity<Pacientes>()
-            .HasData(
-            new Pacientes {
-                IdPac = 1,
-                PacNombre="Paciente12", 
-                PacApellido="Apellido2", 
-                PacSexo="M", PacGs="A+",
-                PacDireccion="direccion", 
-                PacFechRegistro=DateTime.Now
-            },
-            new Pacientes { 
-                IdPac = 2,
-                PacNombre = "Paciente2", 
-                PacApellido = "Apellido3", 
-                PacSexo = "F", 
-                PacGs = "0+", 
-                PacDireccion = "direccion", 
-                PacFechRegistro = DateTime.Now }
-        );
-
-        modelBuilder.Entity<Trabajadores>()
-            .HasData(new Trabajadores {
-                TrabNombre = "Nombre",
-                TrabApellido = "Apellido",
-                TrabDireccion = "Dirección",
-                TrabFechaContrato = DateTime.Now,
-                TrabHorario = "Horario",
-                TrabPuesto = "Puesto",
-                TrabSexo = "M",
-                TrabTel = "Teléfono",
-                TrabCorreo = "Correo"
-            });
-
-        modelBuilder.Entity<Usuario>()
-            .HasData(new Usuario {
-                IdUsu = 1,
-                UsuNombre = "admin",
-                UsuPwd = "1",
-                UsuRol = "admin",
-            });*/
-    }
+	}
 }

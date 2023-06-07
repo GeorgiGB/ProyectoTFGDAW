@@ -7,9 +7,9 @@ namespace ProyectoTFG.Data
     {
         private readonly HospitalContext _context;
 
-        public CitasService(HospitalContext context) 
+        public CitasService(HospitalContext context)
         {
-        _context = context;
+            _context = context;
         }
         public async Task<bool> AgregarCitas(Cita cita)
         {
@@ -42,10 +42,10 @@ namespace ProyectoTFG.Data
 
             return await _context.SaveChangesAsync() > 0;
         }
-        
+
         public async Task<bool> SaveCitas(Cita citas)
         {
-            if (citas.IdCita > 0)
+            if (citas.idCita > 0)
                 return await UpdateCitas(citas);
             else
                 return await AgregarCitas(citas);
@@ -55,8 +55,31 @@ namespace ProyectoTFG.Data
             return await _context.Citas
                 .Include(c => c.Paciente)
                 .Include(c => c.Trabajador)
-                .FirstOrDefaultAsync(c => c.IdCita == id);
+                .FirstOrDefaultAsync(c => c.idCita == id);
         }
 
+        public async Task<bool> AprobarCita(int id)
+        {
+            var cita = await _context.Citas.FindAsync(id);
+            if (cita == null)
+            {
+                return false;
+            }
+
+            cita.Estado = Cita.EstadoCita.Aprobada.ToString();
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> DenegarCita(int id)
+        {
+            var cita = await _context.Citas.FindAsync(id);
+            if (cita == null)
+            {
+                return false;
+            }
+
+            cita.Estado = Cita.EstadoCita.Denegada.ToString();
+            return await _context.SaveChangesAsync() > 0;
+        }
     }
 }
