@@ -12,16 +12,6 @@ CREATE TABLE Trabajadores (
     trabFechNa DATE
 );
 
--- Creación de la tabla Usuarios
-CREATE TABLE Usuarios (
-    idusu INT PRIMARY KEY,
-    usuNombre VARCHAR(50) NOT NULL,
-    usuPwd VARCHAR(50) NOT NULL,
-    usuRol VARCHAR(20) NOT NULL,
-    usuTrabId INT NOT NULL,
-    FOREIGN KEY (usuTrabId) REFERENCES Trabajadores(id)
-);
-
 -- Creación de la tabla Pacientes
 CREATE TABLE Pacientes (
     idpac INT PRIMARY KEY,

@@ -10,3 +10,8 @@ https://blazor.syncfusion.com/demos/scheduler/overview?_gl=1*1yetu8z*_ga*OTcwMTI
 https://blazor.syncfusion.com/demos/calendar/date-range?_gl=1*1yetu8z*_ga*OTcwMTIwNjA0LjE2ODQzMjUzNjk.*_ga_WC4JKKPHH0*MTY4NTM0NzU4My4xNS4xLjE2ODUzNDkzMTcuNTkuMC4w&_ga=2.43841701.1654332485.1685343436-970120604.1684325369&theme=tailwind
 https://blazor.syncfusion.com/demos/sidebar/sidebar-with-listview?_gl=1*1yetu8z*_ga*OTcwMTIwNjA0LjE2ODQzMjUzNjk.*_ga_WC4JKKPHH0*MTY4NTM0NzU4My4xNS4xLjE2ODUzNDkzMTcuNTkuMC4w&_ga=2.43841701.1654332485.1685343436-970120604.1684325369&theme=tailwind
 https://learn.microsoft.com/es-es/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=netcore-cli
+
+
+Con PMC - 
+Add-Migration InitialCreate
+Update-Database

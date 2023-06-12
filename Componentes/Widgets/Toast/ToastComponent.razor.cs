@@ -4,8 +4,8 @@ using Syncfusion.Blazor.Notifications;
 
 namespace ProyectoTFG.Componentes.Widgets.Toast
 {
-    public partial class ToastComponent
-    {
+    public partial class ToastComponent : ComponentBase
+	{
         [Inject] public ToastService? ToastService { get; set; }
 
         public SfToast? Toast;
@@ -14,17 +14,17 @@ namespace ProyectoTFG.Componentes.Widgets.Toast
 
         private ToastOption Options = new();
 
-        protected override async void OnInitialized()
+        protected override void OnInitialized()
         {
             ToastService.ShowToastTrigger += (options) =>
             {
                 InvokeAsync(() =>
                 {
                     this.Options.Title = options.Title;
-					this.Options.Content = options.Content;
-					this.IsToastVisible = true;
-					this.StateHasChanged();
-					this.Toast.ShowAsync();
+                    this.Options.Content = options.Content;
+                    this.IsToastVisible = true;
+                    this.StateHasChanged();
+                    Toast?.ShowAsync();
                 });
             };
             base.OnInitialized();

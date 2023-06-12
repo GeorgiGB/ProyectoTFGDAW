@@ -13,8 +13,11 @@
 
         public const string VistaCitas = "/api/citas";
         public const string CrearCitas = "/api/crearcitas";
+        public const string AdministrarCitas = "/api/citaspendientes";
 
         public const string VistaEstadisticas = "/api/estadisticas";
+
+        public const string CerrarSesion = "/logout";
 
 
         public const string PaginaPrincipal = "/";

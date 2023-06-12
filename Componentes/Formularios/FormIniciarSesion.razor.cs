@@ -1,39 +1,38 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Identity;
 using ProyectoTFG.Componentes.Widgets.Toast;
 using ProyectoTFG.Data;
+using ProyectoTFG.Data.Autentificacion;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoTFG.Componentes.Formularios
 {
     public partial class FormIniciarSesion
     {
-        public Usuario UsuarioIniciado = new();
-
         [Inject] public ToastService? Toast { get; set; }
 
-        private async Task iniciarSesion()
+        [Inject] public NavigationManager Navigation { get; set; }
+
+        [Inject] public UserManager<IdentityUser> userManager { get; set; }
+
+        [Inject] public SignInManager<IdentityUser> signInManager { get; set; }
+
+        private EstandarModel loginModel = new EstandarModel();
+
+       
+        private async Task HandleValidSubmit()
         {
-            string nombreUsuario = UsuarioIniciado.UsuNombre;
-            string nombrePwd = UsuarioIniciado.UsuPwd;
+            var result = await signInManager.PasswordSignInAsync(loginModel.Username, loginModel.Password, isPersistent: false, lockoutOnFailure: false);
 
-            Toast.ShowToast(new ToastOption() { Title = "Exito!", Content = "Se ha enviado la notificacion" });
+            if (result.Succeeded)
+            {
+                Navigation.NavigateTo("/api/trabajadores");
+                Toast?.ShowToast(new ToastOption() { Title = "Exito!", Content = "Se ha enviado la notificacion" });
+            }
+            else
+            {
+                Toast?.ShowToast(new ToastOption() { Title = "Fallido!", Content = "No se ha podido iniciar sesion" });
+            }
         }
-        /*
-                private DatosDataContext? _context;
-                protected override async Task OnInitializedAsync()
-                {
-                    await ShowDatos();
-                }
-
-                public async Task ShowDatos()
-                {
-                    _context ??= await DatosDataContextFatory.CreateDbContextAsync();
-
-                    if (_context is not null)
-                    {
-                        DatosMostrados = await _context.Datos.ToListAsync();
-                    }
-
-                    //if (true) await _context.DisposeAsync();
-                }*/
     }
 }

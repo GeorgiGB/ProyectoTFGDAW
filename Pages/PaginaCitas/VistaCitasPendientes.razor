@@ -2,7 +2,16 @@
 <!--PAGINA DONDE SE VERAN LAS CITAS QUE SE TIENEN QUE APROBAR-->
 <BarraSuperior></BarraSuperior>
 
+<div class="flex">
+
+<div class="w-1/7 bg-gray-700">
 <BarraLateral></BarraLateral>
+</div>
+
+    <div class="flex flex-col w-full">
+        <div class="w-full text-black px-4 py-4 flex-col ">
+            @*<BarraBusqueda Placeholder="Buscar Cita" @bind-ItemBuscado="trabajadorBuscado" OnBuscar="BuscarTrabajador" OnReiniciarLista="ReiniciarLista" RutaPredefinida="@RutasDefinidas.CrearTrabajador"></BarraBusqueda>*@
+        </div>
 <h2>Citas Pendientes</h2>
 
 @if (citasPendientes.Any())
@@ -32,7 +41,5 @@ else
 {
     <p>No hay citas aprobadas.</p>
 }
-
-@code {
-    // Código de la clase
-}
+</div>
+</div>

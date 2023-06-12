@@ -7,6 +7,7 @@ namespace ProyectoTFG.Componentes.Widgets
         [Parameter] public string NombreRuta { get; set; } = "/";
 
         [Parameter] public string NombreVisual { get; set; } = "falta texto";
-        [Parameter] public string icono { get; set; }
+        [Parameter] public string icono { get; set; } //No se usa
+
     }
 }

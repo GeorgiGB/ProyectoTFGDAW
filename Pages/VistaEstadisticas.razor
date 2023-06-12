@@ -1,6 +1,7 @@
 ﻿@page "/api/estadisticas"
 
 <PageTitle>Estadisticas</PageTitle>
+<BarraSuperior></BarraSuperior>
 
 <div class="flex">
     <!-- Sidebar -->
@@ -14,17 +15,41 @@
         <div class="control-section">
             <div class="w-1/2 pr-4">
                 <div class="border-r border-blue-500">
-                    <GraficoDonut DatosMostrar="@turnoData" XName="Turno" YName="Contador" NombreTitulo="Clasificacion de turnos de trabajadores"></GraficoDonut>
+                    @if(turnoData == null || !turnoData.Any())
+                    {
+                        <h1>Estado de los datos</h1>
+                        <div>No hay datos a mostrar</div>
+                    }else{
+                        <GraficoDonut DatosMostrar="@turnoData" XName="Turno" YName="Contador" NombreTitulo="Clasificacion de turnos de trabajadores"></GraficoDonut>
+                    }
                 </div>
             </div>
             <div class="w-1/2 pr-4">
                 <div class="border-r border-blue-500">
-                    <GraficoDonut DatosMostrar="@citaData" XName="Turno" YName="Contador" NombreTitulo="Estado de las citas"></GraficoDonut>
+                    @if(citaData == null || !citaData.Any())
+                    {
+                        <h1>Estado de las citas</h1>
+                        <div>No hay datos a mostrar</div>
+                    }
+                    else
+                    {
+                        <GraficoDonut DatosMostrar="@citaData" XName="Turno" YName="Contador" NombreTitulo="Estado de las citas"></GraficoDonut>
+                    }
+                    
                 </div>
             </div>
             <div class="w-1/2 pr-4">
                 <div class="border-r border-blue-500">
-                    <GraficoDonut DatosMostrar="@gsDatas" XName="Turno" YName="Contador" NombreTitulo="Clasificacion Grupos Sanguineos sobre de Pacientes"></GraficoDonut>
+                    @if (gsDatas == null || !gsDatas.Any())
+                    {
+                        <h1>Estado de los pacientes</h1>
+                        <div>No hay datos a mostrar</div>
+                    }
+                    else
+                    {
+                        <GraficoDonut DatosMostrar="@gsDatas" XName="Turno" YName="Contador" NombreTitulo="Clasificacion Grupos Sanguineos sobre de Pacientes"></GraficoDonut>
+                    }
+                    
                 </div>
             </div>
         </div>

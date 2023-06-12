@@ -8,11 +8,12 @@ namespace ProyectoTFG.Pages.PaginaCitas
         List<Cita> citasPendientes;
         List<Cita> citasAprobadas;
 
-        protected override void OnInitialized()
+        [Inject] public CitasService citasService { get; set; }
+
+        protected async Task OnInitialized()
         {
-            // Obtener las citas pendientes y aprobadas desde el servicio o repositorio
-            citasPendientes = ObtenerCitasPendientes();
-            citasAprobadas = ObtenerCitasAprobadas();
+            /*Invocar las listas de citas*/
+            citasPendientes = (List<Cita>)await citasService.GetAllCitas();
         }
 
         private void AprobarCita(Cita cita)
@@ -36,28 +37,8 @@ namespace ProyectoTFG.Pages.PaginaCitas
             citasPendientes.Remove(cita);
         }
 
-        // Método simulado para obtener las citas pendientes desde el servicio o repositorio
-        private List<Cita> ObtenerCitasPendientes()
-        {
-            // Lógica para obtener las citas pendientes
-            // Puedes reemplazar esta lógica simulada con tu implementación real
-            return new List<Cita>
-        {
-            new Cita { idCita = 1, PacienteId = 1, Fecha = DateTime.Now.AddDays(1), Duracion = 30, Estado = Cita.EstadoCita.Pendiente.ToString() },
-            new Cita { idCita = 2, PacienteId = 2, Fecha = DateTime.Now.AddDays(2), Duracion = 30, Estado = Cita.EstadoCita.Pendiente.ToString() }
-        };
-        }
 
-        // Método simulado para obtener las citas aprobadas desde el servicio o repositorio
-        private List<Cita> ObtenerCitasAprobadas()
-        {
-            // Lógica para obtener las citas aprobadas
-            // Puedes reemplazar esta lógica simulada con tu implementación real
-            return new List<Cita>
-        {
-            new Cita { idCita = 3, PacienteId = 3, Fecha = DateTime.Now.AddDays(3), Duracion = 45, Estado = Cita.EstadoCita.Aprobada.ToString() }
-        };
-        }
+        
     }
 
 }

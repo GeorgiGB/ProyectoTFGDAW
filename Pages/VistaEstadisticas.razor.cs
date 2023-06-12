@@ -5,7 +5,7 @@ using Syncfusion.Blazor;
 
 namespace ProyectoTFG.Pages
 {
-	public partial class VistaEstadisticas
+	public partial class VistaEstadisticas : ComponentBase
 	{
 		List<DatosEstadisticos> turnoData = new ();
         List<DatosEstadisticos> citaData = new();

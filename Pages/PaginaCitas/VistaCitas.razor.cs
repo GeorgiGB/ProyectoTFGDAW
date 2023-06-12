@@ -5,12 +5,12 @@ using ProyectoTFG.Interfaces;
 
 namespace ProyectoTFG.Pages.PaginaCitas
 {
-    public partial class VistaCitas
+    public partial class VistaCitas : ComponentBase
     {
         private List<Cita> CitasMostradas = new();
-        [Inject] HospitalContext context { get; set; }
-        [Inject] public CitasService citasService { get; set; }
-        [Inject] NavigationManager SiguientePagina { get; set; }
+        [Inject] HospitalContext? context { get; set; }
+        [Inject] public CitasService? citasService { get; set; }
+        [Inject] NavigationManager? SiguientePagina { get; set; }
         protected override async Task OnInitializedAsync()
         {
             await ShowCitas();
@@ -18,7 +18,7 @@ namespace ProyectoTFG.Pages.PaginaCitas
 
         private void VerDetalle(int id)
         {
-            SiguientePagina.NavigateTo($"/api/citas/{id}");
+            SiguientePagina?.NavigateTo($"/api/citas/{id}");
         }
 
         public async Task ShowCitas()

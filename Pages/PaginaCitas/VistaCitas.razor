@@ -1,18 +1,22 @@
 ﻿@page "/api/citas"
 <!--Pagina donde se veran las citas reservadas-->
-
+<PageTitle>Vista de Citas</PageTitle>
 <BarraSuperior></BarraSuperior>
-<div class="flex">
+
+<div class="w-1/7 flex">
     <div class="bg-gray-700">
         <BarraLateral></BarraLateral>
 
     </div>
+    <div class="w-full">
+        <div class="col-lg-12 control-section">
+            <div class="content-wrapper">
+                <div>
+    <!-- Contenido principal -->
+    <div class="flex flex-col w-full">
     <div class="w-full text-white px-4 py-4 flex-col ">
         <BarraBusqueda Placeholder="Buscar cita" RutaPredefinida="@RutasDefinidas.CrearCitas"></BarraBusqueda>
     </div>
-	<div class="w-full h-full overflow-auto">
-		<div class="p-4">
-			<div class="flex flex-wrap justify-start">
 				@if (CitasMostradas != null)
 				{
                     <SfGrid DataSource="@CitasMostradas" AllowPaging="true">
@@ -31,4 +35,6 @@
             </div>
 		</div>
 	</div>
+</div>
+</div>
 </div>

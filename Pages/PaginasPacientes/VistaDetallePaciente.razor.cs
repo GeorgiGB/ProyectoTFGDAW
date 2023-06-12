@@ -6,17 +6,17 @@ using ProyectoTFG.Interfaces;
 
 namespace ProyectoTFG.Pages.PaginasPacientes
 {
-    public partial class VistaDetallePaciente
-    {
-        [Parameter] public string IdPac { get; set; }
-        [Inject] public PacientesService pacientesService { get; set;}
+    public partial class VistaDetallePaciente : ComponentBase
+	{
+        [Parameter] public string? IdPac { get; set; }
+        [Inject] public PacientesService? pacientesService { get; set;}
 
-        [Inject] public ToastService toastService { get; set; }
+        [Inject] public ToastService? toastService { get; set; }
 
-        [Inject] public HospitalContext context { get; set; }
-        [Inject] public NavigationManager Navigation { get; set; }
+        [Inject] public HospitalContext? context { get; set; }
+        [Inject] public NavigationManager? Navigation { get; set; }
 
-        private Pacientes pacienteSeleccionado;
+        private Pacientes? pacienteSeleccionado;
 
         private bool isEditing = false;
 
@@ -39,7 +39,7 @@ namespace ProyectoTFG.Pages.PaginasPacientes
             pacienteSeleccionado = await context.Pacientes.FindAsync(int.Parse(IdPac));
         }
 
-        private async void HandleValidSubmit()
+        private async Task HandleValidSubmit()
         {
             isEditing = false;
 
@@ -51,7 +51,6 @@ namespace ProyectoTFG.Pages.PaginasPacientes
 
             StateHasChanged();
 
-            //NavigateBack();
         }
         private void ShowNotification()
         {

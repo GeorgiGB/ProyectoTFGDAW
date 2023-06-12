@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace ProyectoTFG.Data;
 
-public class HospitalContext : DbContext
+public class HospitalContext : IdentityDbContext<IdentityUser>
 {
     protected readonly IConfiguration Configuration;
 
@@ -13,8 +15,6 @@ public class HospitalContext : DbContext
     public DbSet<Pacientes> Pacientes { get; set; }
 
     public DbSet<Trabajadores> Trabajadores { get; set; }
-
-    public DbSet<Usuario> Usuarios { get; set; }
 
     public HospitalContext(IConfiguration configuration)
     {
@@ -27,9 +27,10 @@ public class HospitalContext : DbContext
             .UseSqlite("Data Source=Data\\\\\\\\hospital.db");
     }
 
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Atendido>(entity =>
         {
             entity.HasKey(e => new { e.TrabajadorId, e.PacienteId });
@@ -133,28 +134,5 @@ public class HospitalContext : DbContext
                 .HasColumnType("VARCHAR(15)")
                 .HasColumnName("trabTel");
         });
-
-        modelBuilder.Entity<Usuario>(entity =>
-        {
-            entity.HasKey(e => e.idUsu);
-
-            entity.Property(e => e.idUsu)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("INTEGER")
-                .HasColumnName("idUsu");
-            entity.Property(e => e.UsuNombre)
-                .HasColumnType("VARCHAR(50)")
-                .HasColumnName("usuNombre");
-            entity.Property(e => e.UsuPwd)
-                .HasColumnType("VARCHAR(50)")
-                .HasColumnName("usuPwd");
-            entity.Property(e => e.UsuRol)
-                .HasColumnType("VARCHAR(20)")
-                .HasColumnName("usuRol");
-            entity.Property(e => e.UsuTrabId)
-                .HasColumnType("INTEGER")
-                .HasColumnName("usuTrabId");
-        });
-
-	}
+    }
 }
