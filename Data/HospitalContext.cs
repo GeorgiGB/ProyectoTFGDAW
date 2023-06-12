@@ -77,6 +77,7 @@ public class HospitalContext : IdentityDbContext<IdentityUser>
 				.ValueGeneratedOnAdd()
 				.HasColumnType("INTEGER")
                 .HasColumnName("idPac");
+           
             entity.Property(e => e.PacApellido)
                 .HasColumnType("VARCHAR(50)")
                 .HasColumnName("pacApellido");

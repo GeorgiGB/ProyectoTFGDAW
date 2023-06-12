@@ -7,7 +7,7 @@ namespace ProyectoTFG.Componentes.Formularios
 {
     public partial class FormSolicitarCita
     {
-        private Cita NuevaCita { get; set; }
+        private Cita NuevaCita = new();
 
         [Inject] CitasService citaService { get; set; }
 

@@ -1,4 +1,4 @@
-﻿@page "/api/citas/crearcita"
+﻿@page "/api/citas/crearcitas"
 
 <PageTitle>Solicitar Cita</PageTitle>
 <BarraSuperior></BarraSuperior>
@@ -8,7 +8,20 @@
 <BarraLateral></BarraLateral>
 </div>
     <div class="w-full">
-        <FormSolicitarCita></FormSolicitarCita>
+        <div class="container mx-auto py-6 px-4 max-w-sm mx-auto">
+            <div class="bg-white shadow-xl rounded-lg py-3 px-5">
+                <h1 class="text-xl font-semibold mb-4">Solicitar Cita</h1>
+
+                <EditForm Model="@NuevaCita" OnValidSubmit="@OnSubmit">
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label for="fecha">Fecha deseada para la cita:</label>
+                        <input type="date" @bind="NuevaCita.Fecha" id="fecha" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    </div>
+
+                    <button type="submit" class="mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-400 hover:enabled:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50">Solicitar Cita</button>
+                </EditForm>
+            </div>
+        </div>
     </div>
 </div>
 <ToastComponent></ToastComponent>

@@ -1,5 +1,5 @@
 ﻿@page "/api/pacientes/{IdPac}"
-
+@attribute [Authorize]
 <PageTitle>Vista de Pacientes</PageTitle>
 
 <BarraSuperior></BarraSuperior>
@@ -68,7 +68,7 @@
 
 					<div class="mt-4">
 						<button type="submit" class="mt-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-400 hover:enabled:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50" disabled="@(!isEditing)">
-							Crear
+							Guardar Cambios
 						</button>
 					</div>
 

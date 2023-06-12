@@ -1,4 +1,5 @@
 ﻿@page "/api/citas"
+@attribute [Authorize]
 <!--Pagina donde se veran las citas reservadas-->
 <PageTitle>Vista de Citas</PageTitle>
 <BarraSuperior></BarraSuperior>
@@ -11,30 +12,47 @@
     <div class="w-full">
         <div class="col-lg-12 control-section">
             <div class="content-wrapper">
-                <div>
-    <!-- Contenido principal -->
-    <div class="flex flex-col w-full">
-    <div class="w-full text-white px-4 py-4 flex-col ">
-        <BarraBusqueda Placeholder="Buscar cita" RutaPredefinida="@RutasDefinidas.CrearCitas"></BarraBusqueda>
-    </div>
-				@if (CitasMostradas != null)
-				{
-                    <SfGrid DataSource="@CitasMostradas" AllowPaging="true">
-                        <GridColumns>
-                            <GridColumn Field=@nameof(Cita.idCita) HeaderText="ID Cita" TextAlign="TextAlign.Right" Width="120"></GridColumn>
-                            <GridColumn Field=@nameof(Cita.Paciente.PacNombre) HeaderText="ID Paciente" TextAlign="TextAlign.Right" Width="120"></GridColumn>
-                            <GridColumn Field=@nameof(Cita.Fecha) HeaderText="Fecha" TextAlign="TextAlign.Right" Format="d" Width="120"></GridColumn>
-                            <GridColumn Field=@nameof(Cita.EstadoCita) HeaderText="Estado" TextAlign="TextAlign.Right" Width="120"></GridColumn>
-                        </GridColumns>
-                    </SfGrid>
-                }
-                else
-                {
-                    <CargandoPagina></CargandoPagina>
-                }
+
+                <!-- Contenido principal -->
+                <div class="flex flex-col w-full">
+                    <div class="w-full text-white px-4 py-4 flex-col ">
+                        <BarraBusqueda Placeholder="Buscar cita" RutaPredefinida="@RutasDefinidas.CrearCitas"></BarraBusqueda>
+                    </div>
+                    <div class="min-w-[400px] min-h-[600px]">
+                        @if (CitasMostradas != null)
+                        {
+                            <SfGrid DataSource="@CitasMostradas" AllowPaging="true">
+                                <GridColumns>
+                                    <GridColumn Field=@nameof(Cita.idCita) HeaderText="ID Cita" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(Cita.PacienteId) HeaderText="ID Paciente" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(Cita.Fecha) HeaderText="Fecha" TextAlign="TextAlign.Right" Format="d" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(Cita.Estado) HeaderText="Estado" TextAlign="TextAlign.Center" Width="120"></GridColumn>
+                                    <GridColumn HeaderText="Acciones" TextAlign="TextAlign.Center">
+                                        <Template>
+                                            @{
+                                                var cita = (context as Cita);
+                                                <div class="pb-2 flex justify-end">
+                                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-300" @onclick="(()=>VerDetalle((int)cita.idCita))">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z" />
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            }
+                                        </Template>
+                                    </GridColumn>
+                                </GridColumns>
+                            </SfGrid>
+                        }
+                        else
+                        {
+                            <CargandoPagina></CargandoPagina>
+                        }
+                    </div>
+                </div>
+
             </div>
-		</div>
-	</div>
-</div>
-</div>
+        </div>
+    </div>
 </div>

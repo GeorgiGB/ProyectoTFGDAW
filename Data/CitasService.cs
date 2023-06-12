@@ -13,9 +13,19 @@ namespace ProyectoTFG.Data
         }
         public async Task<bool> AgregarCitas(Cita cita)
         {
-            _context.Citas.Add(cita);
-            return await _context.SaveChangesAsync() > 0;
+            try
+            {
+                _context.Citas.Add(cita);
+                return await _context.SaveChangesAsync() > 0;
+            }
+            catch (DbUpdateException ex)
+            {
+                var innerException = ex.InnerException;
+                Console.WriteLine(innerException.Message);
+                throw;  // esto re-lanza la excepción para que pueda ser manejada en otro lugar, o puedes optar por manejarla aquí.
+            }
         }
+
 
         public async Task<bool> DeleteCitas(int id)
         {
@@ -36,20 +46,53 @@ namespace ProyectoTFG.Data
             return await _context.Citas.FindAsync(id);
         }
 
-        public async Task<bool> UpdateCitas(Cita cita)
+        public async Task<Cita> UpdateCitas(Cita cita)
         {
-            _context.Entry(cita).State = EntityState.Modified;
-
-            return await _context.SaveChangesAsync() > 0;
+            try
+            {
+                _context.Entry(cita).State = EntityState.Modified;
+                var numChanges = await _context.SaveChangesAsync();
+                if (numChanges > 0)
+                {
+                    return cita;
+                }
+                else
+                {
+                    // No se realizaron cambios, manejar según sea necesario
+                    // ...
+                }
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                foreach (var entry in ex.Entries)
+                {
+                    if (entry.Entity is Cita)
+                    {
+                        // Una operación de actualización de la base de datos afectó inesperadamente
+                        // a más o menos filas de las esperadas. Esto puede ser el resultado de un
+                        // conflicto de concurrencia. En este caso, recargamos la entidad.
+                        await entry.ReloadAsync();
+                        await _context.SaveChangesAsync();
+                        return cita;
+                    }
+                    else
+                    {
+                        // Algo más ocurrió que causó la excepción. Lanzamos la excepción.
+                        throw;
+                    }
+                }
+            }
+            return null;
         }
 
-        public async Task<bool> SaveCitas(Cita citas)
+
+        /*public async Task<bool> SaveCitas(Cita citas)
         {
             if (citas.idCita > 0)
                 return await UpdateCitas(citas);
             else
                 return await AgregarCitas(citas);
-        }
+        }*/
         public async Task<Cita> GetCitaDetalles(int id)
         {
             return await _context.Citas

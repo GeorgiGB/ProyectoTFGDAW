@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using ProyectoTFG.Componentes.Widgets.Toast;
 using ProyectoTFG.Data;
 
 namespace ProyectoTFG.Pages.PaginasTrabajadores
 {
+    [Authorize]
     public partial class VistaDetalleTrabajador : ComponentBase
     {
         [Parameter] public string TrabId { get; set; }

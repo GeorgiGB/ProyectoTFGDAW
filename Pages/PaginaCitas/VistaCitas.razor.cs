@@ -1,16 +1,19 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoTFG.Data;
 using ProyectoTFG.Interfaces;
 
 namespace ProyectoTFG.Pages.PaginaCitas
 {
+    [Authorize]
     public partial class VistaCitas : ComponentBase
     {
         private List<Cita> CitasMostradas = new();
         [Inject] HospitalContext? context { get; set; }
         [Inject] public CitasService? citasService { get; set; }
-        [Inject] NavigationManager? SiguientePagina { get; set; }
+        [Inject] NavigationManager? Navigator { get; set; }
         protected override async Task OnInitializedAsync()
         {
             await ShowCitas();
@@ -18,7 +21,7 @@ namespace ProyectoTFG.Pages.PaginaCitas
 
         private void VerDetalle(int id)
         {
-            SiguientePagina?.NavigateTo($"/api/citas/{id}");
+            Navigator?.NavigateTo($"/api/citas/gestionarcita/{id}");
         }
 
         public async Task ShowCitas()

@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using ProyectoTFG.Data;
 
 namespace ProyectoTFG.Pages.PaginaCitas
 {
+    [Authorize]
     public partial class VistaCitasPendientes : ComponentBase
     {
-        List<Cita> citasPendientes;
-        List<Cita> citasAprobadas;
+        List<Cita> citasPendientes = new();
+        List<Cita> citasAprobadas = new();
 
         [Inject] public CitasService citasService { get; set; }
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoTFG.Componentes;
 using ProyectoTFG.Componentes.Widgets.Toast;
@@ -6,6 +8,7 @@ using ProyectoTFG.Data;
 
 namespace ProyectoTFG.Pages.PaginasTrabajadores
 {
+    [Authorize]
     public partial class VistaTrabajadores : ComponentBase
     {
         private List<Trabajadores> TrabajadoresMostrados = new();

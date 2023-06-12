@@ -12,7 +12,7 @@
         public const string DetallePaciente = "/api/pacientes/{TrabId}";
 
         public const string VistaCitas = "/api/citas";
-        public const string CrearCitas = "/api/crearcitas";
+        public const string CrearCitas = "/api/citas/crearcitas";
         public const string AdministrarCitas = "/api/citaspendientes";
 
         public const string VistaEstadisticas = "/api/estadisticas";

@@ -5,6 +5,8 @@ using ProyectoTFG.Data;
 using Syncfusion.Blazor;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Server;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,13 +21,11 @@ builder.Services.AddScoped<TrabajadorService>();
 builder.Services.AddScoped<CitasService>();
 builder.Services.AddScoped<PacientesService>();
 builder.Services.AddScoped<ToastService>();
-builder.Services.AddCors();
+builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
 
-
-/*builder.Services.AddDbContext<HospitalContext>(options =>
-	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));*/
 builder.Services.AddDefaultIdentity<IdentityUser>()
-	.AddRoles<IdentityRole>() // Esto agrega RoleManager al contenedor de inyecci�n de dependencias
+	.AddRoles<IdentityRole>() // Esto agrega RoleManager al contenedor de inyeccion de dependencias
 	.AddEntityFrameworkStores<HospitalContext>();
 
 

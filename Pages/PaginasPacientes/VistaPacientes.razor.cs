@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using ProyectoTFG.Componentes.Widgets.Toast;
 using ProyectoTFG.Data;
@@ -6,6 +7,7 @@ using ProyectoTFG.Interfaces;
 
 namespace ProyectoTFG.Pages.PaginasPacientes
 {
+    [Authorize]
     public partial class VistaPacientes : ComponentBase
     {
         private List<Pacientes> PacientesMostrados = new();

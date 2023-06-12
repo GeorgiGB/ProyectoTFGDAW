@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ProyectoTFG.Componentes;
 using ProyectoTFG.Componentes.Widgets.Toast;
 using ProyectoTFG.Data;
 using ProyectoTFG.Interfaces;
 
 namespace ProyectoTFG.Pages.PaginasPacientes
 {
+    [Authorize]
     public partial class VistaDetallePaciente : ComponentBase
 	{
         [Parameter] public string? IdPac { get; set; }
@@ -59,7 +62,7 @@ namespace ProyectoTFG.Pages.PaginasPacientes
 
         private void NavigateBack()
         {
-            Navigation.NavigateTo("/api/trabajadores");
+            Navigation.NavigateTo(RutasDefinidas.VistaPacientes);
         }
     }
 }
