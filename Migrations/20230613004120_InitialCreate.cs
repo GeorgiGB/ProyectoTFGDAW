@@ -5,20 +5,18 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoTFG.Migrations
 {
-    /// <inheritdoc />
     public partial class InitialCreate : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,21 +27,21 @@ namespace ProyectoTFG.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,8 +52,8 @@ namespace ProyectoTFG.Migrations
                 name: "Atendido",
                 columns: table => new
                 {
-                    TrabajadorId = table.Column<long>(type: "INTEGER", nullable: false),
-                    PacienteId = table.Column<long>(type: "INTEGER", nullable: false)
+                    TrabajadorId = table.Column<int>(type: "int", nullable: false),
+                    PacienteId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,13 +64,13 @@ namespace ProyectoTFG.Migrations
                 name: "Pacientes",
                 columns: table => new
                 {
-                    idPac = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    pacNombre = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    pacApellido = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    pacDireccion = table.Column<string>(type: "VARCHAR(100)", nullable: false),
+                    idPac = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    pacNombre = table.Column<string>(type: "varchar(50)", nullable: false),
+                    pacApellido = table.Column<string>(type: "varchar(50)", nullable: false),
+                    pacDireccion = table.Column<string>(type: "varchar(100)", nullable: false),
                     pacSexo = table.Column<string>(type: "CHAR(1)", nullable: false),
-                    pacGS = table.Column<string>(type: "VARCHAR(50)", nullable: false),
+                    pacGS = table.Column<string>(type: "varchar(50)", nullable: false),
                     pacFechRegistro = table.Column<DateTime>(type: "DATE", nullable: false)
                 },
                 constraints: table =>
@@ -84,16 +82,16 @@ namespace ProyectoTFG.Migrations
                 name: "Trabajadores",
                 columns: table => new
                 {
-                    idTrab = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    trabNombre = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    trabApellido = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    trabDireccion = table.Column<string>(type: "VARCHAR(100)", nullable: false),
-                    trabPuesto = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    trabHorario = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    trabCorreo = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    trabSexo = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    trabTel = table.Column<string>(type: "VARCHAR(15)", nullable: false),
+                    idTrab = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    trabNombre = table.Column<string>(type: "varchar(50)", nullable: false),
+                    trabApellido = table.Column<string>(type: "varchar(50)", nullable: false),
+                    trabDireccion = table.Column<string>(type: "varchar(100)", nullable: false),
+                    trabPuesto = table.Column<string>(type: "varchar(50)", nullable: false),
+                    trabHorario = table.Column<string>(type: "varchar(50)", nullable: false),
+                    trabCorreo = table.Column<string>(type: "varchar(50)", nullable: false),
+                    trabSexo = table.Column<string>(type: "varchar(50)", nullable: false),
+                    trabTel = table.Column<string>(type: "varchar(15)", nullable: false),
                     trabFechaContrato = table.Column<DateTime>(type: "DATE", nullable: false)
                 },
                 constraints: table =>
@@ -105,11 +103,11 @@ namespace ProyectoTFG.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false),
-                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
-                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -126,11 +124,11 @@ namespace ProyectoTFG.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
-                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -147,10 +145,10 @@ namespace ProyectoTFG.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
-                    ProviderKey = table.Column<string>(type: "TEXT", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "TEXT", nullable: true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false)
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,8 +165,8 @@ namespace ProyectoTFG.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -191,10 +189,10 @@ namespace ProyectoTFG.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Value = table.Column<string>(type: "TEXT", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -211,13 +209,13 @@ namespace ProyectoTFG.Migrations
                 name: "Citas",
                 columns: table => new
                 {
-                    idCita = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    PacienteID = table.Column<int>(type: "INTEGER", nullable: false),
-                    TrabajadorID = table.Column<int>(type: "INTEGER", nullable: false),
-                    Fecha = table.Column<DateTime>(type: "DATETIME", nullable: false),
-                    Duracion = table.Column<int>(type: "INTEGER", nullable: false),
-                    Estado = table.Column<string>(type: "VARCHAR(20)", nullable: false)
+                    idCita = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PacienteID = table.Column<int>(type: "int", nullable: false),
+                    TrabajadorID = table.Column<int>(type: "int", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Duracion = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<string>(type: "varchar(20)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -245,7 +243,8 @@ namespace ProyectoTFG.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -271,7 +270,8 @@ namespace ProyectoTFG.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Citas_PacienteID",
@@ -284,7 +284,6 @@ namespace ProyectoTFG.Migrations
                 column: "TrabajadorID");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

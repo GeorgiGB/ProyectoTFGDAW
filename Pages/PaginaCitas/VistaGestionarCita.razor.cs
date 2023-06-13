@@ -25,8 +25,8 @@ namespace ProyectoTFG.Pages.PaginaCitas
 
         private bool isEditing = false;
 
-        private List<Trabajadores> trabajadores;
-        private List<Pacientes> pacientes;
+        private List<Trabajadores> trabajadores = new List<Trabajadores>();
+        private List<Pacientes> pacientes = new List<Pacientes>();
 
         private List<string> Estado = new List<string> { "Aceptada", "Rechazada", "Pendiente"};
 

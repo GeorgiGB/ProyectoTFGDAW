@@ -23,9 +23,9 @@
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label for="trabajador">Trabajador:</label>
                         <InputSelect id="trabajador" @bind-Value="citaSeleccionada.TrabajadorId" class="form-control">
-                            @foreach (var trabajador in trabajadores)
+                            @foreach (var t in trabajadores)
                             {
-                                <option value="@trabajador.idTrab">@trabajador.TrabNombre</option>
+                                <option value="@t.idTrab">@t.TrabNombre</option>
                             }
                         </InputSelect>
                     </div>

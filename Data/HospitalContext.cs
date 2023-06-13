@@ -6,7 +6,12 @@ namespace ProyectoTFG.Data;
 
 public class HospitalContext : IdentityDbContext<IdentityUser>
 {
-    protected readonly IConfiguration Configuration;
+    protected readonly IConfiguration _configuration;
+
+    public HospitalContext(DbContextOptions<HospitalContext> options, IConfiguration configuration):base(options)
+    {
+        _configuration = configuration;
+    }
 
     public DbSet<Atendido> Atendidos { get; set; }
 
@@ -16,15 +21,12 @@ public class HospitalContext : IdentityDbContext<IdentityUser>
 
     public DbSet<Trabajadores> Trabajadores { get; set; }
 
-    public HospitalContext(IConfiguration configuration)
-    {
-        Configuration = configuration;
-    }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.
-            EnableSensitiveDataLogging()
-            .UseSqlite("Data Source=Data\\\\\\\\hospital.db");
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DatosDb"));
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,8 +39,8 @@ public class HospitalContext : IdentityDbContext<IdentityUser>
 
             entity.ToTable("Atendido");
 
-            entity.Property(e => e.TrabajadorId).HasColumnType("INTEGER");
-            entity.Property(e => e.PacienteId).HasColumnType("INTEGER");
+            entity.Property(e => e.TrabajadorId).HasColumnType("int");
+            entity.Property(e => e.PacienteId).HasColumnType("int");
         });
 
         modelBuilder.Entity<Cita>(entity =>
@@ -48,23 +50,23 @@ public class HospitalContext : IdentityDbContext<IdentityUser>
 
             entity.Property(e => e.idCita)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("INTEGER")
+                .HasColumnType("int")
                 .HasColumnName("idCita");
 
-            entity.Property(e => e.Duracion).HasColumnType("INTEGER");
+            entity.Property(e => e.Duracion).HasColumnType("int");
 
-            entity.Property(e => e.Fecha).HasColumnType("DATETIME");
+            entity.Property(e => e.Fecha).HasColumnType("datetime");
 
             entity.Property(e => e.PacienteId)
-                .HasColumnType("INTEGER")
+                .HasColumnType("int")
                 .HasColumnName("PacienteID");
 
             entity.Property(e => e.TrabajadorId)
-                .HasColumnType("INTEGER")
+                .HasColumnType("int")
                 .HasColumnName("TrabajadorID");
 
             entity.Property(e => e.Estado)
-                .HasColumnType("VARCHAR(20)");
+                .HasColumnType("varchar(20)");
         });
 
 
@@ -75,23 +77,23 @@ public class HospitalContext : IdentityDbContext<IdentityUser>
 
 			entity.Property(e => e.idPac)
 				.ValueGeneratedOnAdd()
-				.HasColumnType("INTEGER")
+				.HasColumnType("int")
                 .HasColumnName("idPac");
            
             entity.Property(e => e.PacApellido)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("varchar(50)")
                 .HasColumnName("pacApellido");
             entity.Property(e => e.PacDireccion)
-                .HasColumnType("VARCHAR(100)")
+                .HasColumnType("varchar(100)")
                 .HasColumnName("pacDireccion");
             entity.Property(e => e.PacFechRegistro)
                 .HasColumnType("DATE")
                 .HasColumnName("pacFechRegistro");
             entity.Property(e => e.PacGs)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("varchar(50)")
                 .HasColumnName("pacGS");
             entity.Property(e => e.PacNombre)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("varchar(50)")
                 .HasColumnName("pacNombre");
             entity.Property(e => e.PacSexo)
                 .HasColumnType("CHAR(1)")
@@ -105,34 +107,34 @@ public class HospitalContext : IdentityDbContext<IdentityUser>
 
             entity.Property(e => e.idTrab)
                 .ValueGeneratedOnAdd()
-                .HasColumnType("INTEGER")
+                .HasColumnType("int")
                  .HasColumnName("idTrab");
             entity.Property(e => e.TrabApellido)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("varchar(50)")
                 .HasColumnName("trabApellido");
             entity.Property(e => e.TrabCorreo)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("varchar(50)")
                 .HasColumnName("trabCorreo");
             entity.Property(e => e.TrabDireccion)
-                .HasColumnType("VARCHAR(100)")
+                .HasColumnType("varchar(100)")
                 .HasColumnName("trabDireccion");
             entity.Property(e => e.TrabFechaContrato)
                 .HasColumnType("DATE")
                 .HasColumnName("trabFechaContrato");
             entity.Property(e => e.TrabHorario)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("varchar(50)")
                 .HasColumnName("trabHorario");
             entity.Property(e => e.TrabNombre)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("varchar(50)")
                 .HasColumnName("trabNombre");
             entity.Property(e => e.TrabPuesto)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("varchar(50)")
                 .HasColumnName("trabPuesto");
             entity.Property(e => e.TrabSexo)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("varchar(50)")
                 .HasColumnName("trabSexo");
             entity.Property(e => e.TrabTel)
-                .HasColumnType("VARCHAR(15)")
+                .HasColumnType("varchar(15)")
                 .HasColumnName("trabTel");
         });
     }

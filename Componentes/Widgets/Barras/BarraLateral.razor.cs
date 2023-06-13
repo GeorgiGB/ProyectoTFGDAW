@@ -7,11 +7,11 @@ namespace ProyectoTFG.Componentes.Widgets.Barras
 {
     public partial class BarraLateral : ComponentBase
     {
-        [Inject] public SignInManager<IdentityUser> SignInManager { get; set; }
-        [Inject] public UserManager<IdentityUser> UserManager { get; set; }
-        [Inject] public AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+        [Inject] public SignInManager<IdentityUser>? SignInManager { get; set; }
+        [Inject] public UserManager<IdentityUser>? UserMng { get; set; }
+        [Inject] public AuthenticationStateProvider? AuthenticationStateProvider { get; set; }
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NavigationManager? NavigationManager { get; set; }
         
 
         private string username;
@@ -24,8 +24,8 @@ namespace ProyectoTFG.Componentes.Widgets.Barras
 
             if (user.Identity.IsAuthenticated)
             {
-                IdentityUser identityUser = await UserManager.GetUserAsync(user);
-                username = identityUser?.UserName;
+                /*IdentityUser identityUser = await UserMng.GetUserAsync(user);
+                username = identityUser?.UserName;*/
             }
         }
         public async Task Logout()

@@ -29,9 +29,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>()
 	.AddEntityFrameworkStores<HospitalContext>();
 
 
-var connectionString = builder.Configuration.GetConnectionString("HospitalDB");
+var connectionString = builder.Configuration.GetConnectionString("DatosDb");
 
-builder.Services.AddDbContextFactory<HospitalContext>(options => options.UseSqlite(connectionString));
+builder.Services.AddDbContextFactory<HospitalContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

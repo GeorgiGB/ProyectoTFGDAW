@@ -30,7 +30,7 @@ namespace ProyectoTFG.Pages.PaginaCitas
         }
 
         private void DenegarCita(Cita cita)
-        {
+        {   
             // Lógica para denegar la cita
             cita.Estado = Cita.EstadoCita.Denegada.ToString();
             // Actualizar la cita en el servicio o repositorio

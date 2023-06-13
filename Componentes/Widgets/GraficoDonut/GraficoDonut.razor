@@ -1,6 +1,6 @@
 ﻿@typeparam TItem
 
-<SfAccumulationChart Title="Distribución de Turnos" EnableBorderOnMouseMove="false" SelectionMode="AccumulationSelectionMode.Point">
+<SfAccumulationChart Title="@TituloPrincipal" EnableBorderOnMouseMove="false" SelectionMode="AccumulationSelectionMode.Point">
     <AccumulationChartTooltipSettings Enable="true"></AccumulationChartTooltipSettings>
     <AccumulationChartSeriesCollection>
         <AccumulationChartSeries DataSource="@DatosMostrarAsObject" XName="@XName" YName="@YName" Name="@NombreTitulo">
